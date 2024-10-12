@@ -1,0 +1,13 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <app-lista (videoSeleccionado)="onVideoSeleccionado($event)"></app-lista>
+        </div>
+        
+        <div class="col-md-6 d-flex justify-content-center align-items-center mt-3">
+            <app-video-player [videoId]="selectedVideoId !== null ? selectedVideoId : 1"></app-video-player>
+
+    </div>
+</div>

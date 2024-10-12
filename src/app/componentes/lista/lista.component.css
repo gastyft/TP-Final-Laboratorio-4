@@ -1,0 +1,17 @@
+#sidebar-wrapper {
+    width: 250px; /* Fija el ancho del sidebar */
+  }
+  
+  #page-content-wrapper {
+    margin-left: 250px; /* El contenido principal comienza después del sidebar */
+  }
+  
+  .accordion-button {
+    white-space: nowrap; /* Evita que el texto del botón se divida en varias líneas */
+  }
+  
+  .accordion-body {
+    overflow-y: auto; /* Si el contenido del accordion es muy largo, aparecerá un scroll */
+    max-height: 200px; /* Limita la altura del contenido del acordeón */
+  }
+  
