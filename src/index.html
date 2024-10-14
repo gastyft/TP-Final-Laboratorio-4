@@ -10,11 +10,18 @@
   <script src="https://kit.fontawesome.com/54b826676b.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
   
-   
+  <script src="https://www.youtube.com/iframe_api"></script>
   <link rel="icon" type="image/png" href="assets/UTN-favicon.png">
 
 </head>
 <body>
   <app-root></app-root>
+  <script>
+ 
+    function onYouTubeIframeAPIReady() {
+      window.dispatchEvent(new Event('youtube-api-loaded'));
+    }
+  </script>
+  <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>

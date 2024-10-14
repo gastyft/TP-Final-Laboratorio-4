@@ -8,39 +8,39 @@
           <div class="list-group list-group-flush">
 
              <div class="accordion" id="accordionExample" data-bs-spy="scroll" data-bs-target="#sidebar-wrapper" data-bs-offset="0" tabindex="0">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button   (click)="selectVideo(1)"  class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" >
+    <div class="accordion-item" >
+      <h2 class="accordion-header" id="headingOne" >
+        <button   (click)="selectVideo(1)"  class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"  [ngClass]="{'bg-primary text-white': videosVistos[1]}">
          Clase 1 
         </button>
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+          <strong>TITULO DE CLASE.</strong> DESCRIPCION DE LO QUE SE VA A VER EN LA CLASE
         </div>
       </div>
     </div>
     <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button (click)="selectVideo(2)"  class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+      <h2 class="accordion-header" id="headingTwo" >
+        <button (click)="selectVideo(2)"  class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"  [ngClass]="{'bg-primary text-white': videosVistos[2]}">
          Clase 2
         </button>
       </h2>
       <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+          <strong>TITULO 2</strong> DESCRIPCION DE LO QUE SE VA A VER EN LA CLASE 2
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Accordion Item #3
+        <button  (click)="selectVideo(3)" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"  [ngClass]="{'bg-primary text-white': videosVistos[3]}">
+          Clase 3
         </button>
       </h2>
       <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+          <strong>TITULO CLASE 3</strong> DESCRIPCION DE LO QUE SE VA A VER EN LA CLASE 3
         </div>
       </div>
     </div><div class="accordion-item">

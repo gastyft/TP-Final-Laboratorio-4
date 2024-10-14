@@ -4,6 +4,7 @@ import { ListaComponent } from '../lista/lista.component';
 import { VideoPlayerComponent } from '../video-player/video-player.component';
 import { RouterLink } from '@angular/router';
 import { Error404Component } from "../error404/error404.component";
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-principal',
@@ -14,9 +15,13 @@ import { Error404Component } from "../error404/error404.component";
 })
 
 export class PrincipalComponent {
+  constructor(public sanitizer: DomSanitizer){}
   selectedVideoId: number | null =null; // Variable para almacenar el ID del video seleccionado
-
+  videosVistos: { [key: number]: boolean } = {};
   onVideoSeleccionado(videoId: number ): void {
     this.selectedVideoId = videoId; // Actualiza el ID del video seleccionado
+  }
+  marcarVideoVisto(videoId: number) {
+    this.videosVistos[videoId] = true; // Marcar el video como visto
   }
 }

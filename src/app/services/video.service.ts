@@ -17,8 +17,15 @@ export class VideoService {
       title: 'dibu',
       url: 'assets/dibu.mp4',
       thumbnailUrl: 'assets/thumbnails/thumb2.jpg'
+    },
+    {
+      id:3,
+      title: 'Let me down slowly',
+      url:'https://www.youtube.com/watch?v=50VNCymT-Cs',
+      thumbnailUrl: 'assets/thumbnails/thumb3.jpg', 
+     
     }
-    // Agrega más videos según sea necesario
+   
   ];
 
   getVideosById(id:number): Video  | undefined{

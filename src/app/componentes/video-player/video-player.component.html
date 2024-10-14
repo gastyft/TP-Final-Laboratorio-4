@@ -1,9 +1,12 @@
-
 <div class="d-flex justify-content-center">
-    <div class="mx-auto">
-      <video controls [src]="video.url" width="600" height="600">
-        Tu navegador no soporta la etiqueta de video.
-      </video>
-    </div>
+  <div class="mx-auto">
+    <!-- Si es un video local (mp4) -->
+    <video *ngIf="video.url && video.url.endsWith('.mp4')" controls [src]="video.url" width="600" height="600" (ended)="onVideoEnded()">
+      Tu navegador no soporta la etiqueta de video.
+    </video>
+
+    <!-- Si es un video de YouTube -->
+    <iframe *ngIf="safeUrl && video.url.includes('youtube.com')" [src]="safeUrl" width="600" height="600" frameborder="0" allowfullscreen>
+    </iframe>
   </div>
-  
+</div>
