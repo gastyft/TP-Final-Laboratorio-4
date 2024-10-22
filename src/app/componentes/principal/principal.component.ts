@@ -16,12 +16,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 export class PrincipalComponent {
   constructor(public sanitizer: DomSanitizer){}
-  selectedVideoId: number | null =null; // Variable para almacenar el ID del video seleccionado
+  selectedVideoId: number | null =null; 
   videosVistos: { [key: number]: boolean } = {};
   onVideoSeleccionado(videoId: number ): void {
-    this.selectedVideoId = videoId; // Actualiza el ID del video seleccionado
+    this.selectedVideoId = videoId; 
   }
   marcarVideoVisto(videoId: number) {
-    this.videosVistos[videoId] = true; // Marcar el video como visto
+    this.videosVistos[videoId] = true; 
   }
 }

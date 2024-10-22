@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">TITULO CLASE</label>
+      <input [(ngModel)]="titulo" type="text" class="form-control" id="exampleFormControlInput1" name="titulo" placeholder="TITULO DE LA CLASE">
+  </div>
+  
+  <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">DESCRIPCION DE TEMAS DE LA CLASE</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="descripcion" name="descripcionClase" rows="3"></textarea>
+  </div>
+
+  <div class="mb-3">
+      <label for="formFile" class="form-label">Suba video de la clase</label>
+      <input class="form-control" type="file" id="formFile" (change)="onFileSelected2($event)" name="video">
+  </div>
+  
+  <div class="mb-3">
+      <label for="exampleFormControlInput2" class="form-label">O LINK DE VIDEO</label>
+      <input type="text" class="form-control" id="exampleFormControlInput2" [(ngModel)]="linkVideo" name="linkVideo" placeholder="link del video">
+  </div>
+  <button class="btn btn-primary" (click)="guardarClase()">Crear</button>
+</div>
