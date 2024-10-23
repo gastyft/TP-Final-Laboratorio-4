@@ -4,8 +4,7 @@ import { VideoService } from '../../services/video.service';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
- 
-// Declarar la variable global YT
+
 declare var YT: any;
 
 declare global {
@@ -18,18 +17,17 @@ declare global {
 @Component({
   selector: 'app-video-player',
   standalone: true,
-  imports: [RouterLink, CommonModule,],
+  imports: [RouterLink, CommonModule],
   templateUrl: './video-player.component.html',
   styleUrls: ['./video-player.component.css']
 })
 export class VideoPlayerComponent implements OnChanges {
   @Input() videoId!: number;
   video!: Video;
-  safeUrl: SafeResourceUrl | null = null; // Variable para guardar la URL saneada
+  safeUrl: SafeResourceUrl | null = null; // Para la URL saneada
   @Output() videoSeen = new EventEmitter<number>();
-  player: any; // Variable para el reproductor de YouTube
+  player: any; // Reproductor de YouTube
   private isYouTubeApiLoaded = false; // Estado de la API de YouTube
-  private checkIntervalId: any; // ID del intervalo para verificar el tiempo del video
 
   constructor(private videoService: VideoService, private sanitizer: DomSanitizer) {}
 
@@ -46,27 +44,24 @@ export class VideoPlayerComponent implements OnChanges {
     } else {
       this.video = vid;
 
+      // Comprobar si es un video de YouTube
       if (this.video.url.includes('youtube.com')) {
-       
         this.safeUrl = this.sanitizeYoutubeUrl(this.video.url);
-        
         this.loadYouTubeAPI();
+      } else if (this.video.url.endsWith('.mp4')) {
+        // Es un video local o de Firebase
+        this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.video.url);
       } else {
-        
-        this.safeUrl = null;
-        
-        
-            }
+        this.safeUrl = null; // No se muestra nada para otros tipos de videos
+      }
     }
   }
 
- 
   sanitizeYoutubeUrl(url: string): SafeResourceUrl {
     const embedUrl = url.replace('watch?v=', 'embed/');
     return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);  
   }
 
- 
   onVideoEnded() {
     console.log('El video ha terminado:', this.videoId);
     this.videoSeen.emit(this.videoId); // Emitir cuando termina
@@ -78,24 +73,15 @@ export class VideoPlayerComponent implements OnChanges {
       tag.src = 'https://www.youtube.com/iframe_api';
       const firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
-      this.handleLocalVideoEnded();
       window.onYouTubeIframeAPIReady = () => {
         this.onYouTubeIframeAPIReady();
       };
-
       this.isYouTubeApiLoaded = true;  
     } else {
       this.onYouTubeIframeAPIReady();
     }
   }
-  loadLocalVideo(url: string) {
-    const videoElement = document.getElementById('local-video-player') as HTMLVideoElement;
-    if (videoElement) {
-      videoElement.src = url;
-      videoElement.load();
-      videoElement.play();
-    }
-  }
+
   private onYouTubeIframeAPIReady() {
     this.player = new YT.Player('player', {
       videoId: this.videoId,
@@ -104,28 +90,11 @@ export class VideoPlayerComponent implements OnChanges {
       }
     });
   }
-  
+
   private onPlayerStateChange(event: any) {
     if (event.data === YT.PlayerState.ENDED) {
       console.log('El video de YouTube ha terminado de reproducirse.');
-      this.videoSeen.emit(this.videoId); // Emitir un evento si es necesario
-    }
-  }
-   
-  onPlayerReady(event: any) {
-    console.log('El reproductor de YouTube está listo');
-  }
-
- 
-
-  handleLocalVideoEnded() {
-  this.onVideoEnded(); 
-  }
-
-  ngOnDestroy() {
-    
-    if (this.checkIntervalId) {
-      clearInterval(this.checkIntervalId);
+      this.videoSeen.emit(this.videoId); // Emitir si es necesario
     }
   }
 }

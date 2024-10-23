@@ -1,1 +1,11 @@
-<p>crear-curso works!</p>
+<div class="container">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">TITULO CURSO</label>
+        <input [(ngModel)]="titulo" type="text" class="form-control" id="exampleFormControlInput1" name="titulo" placeholder="TITULO DE LA CLASE">
+    </div>
+    
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">DESCRIPCION DEL CURSO</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="descripcion" name="descripcionClase" rows="3"></textarea>
+    </div>
+    <button class="btn btn-primary" (click)="guardarCurso()" routerLink='/crear-clase' >Crear</button>

@@ -4,11 +4,12 @@
     <div class="d-flex">
         <!-- Sidebar -->
         <div class="bg-light border-right vh-100" id="sidebar-wrapper">
-          <div class="sidebar-heading"><b>NOMBRE CURSO</b> </div>
+          <div class="sidebar-heading"><b>{{curso.title}}</b> </div> <!-- Ya habria que traerse el curso correcto
+          Deberia pasarle el ID del curso desde las cards de cursos y que levante dinamicamente esta seccion -->
           <div class="list-group list-group-flush">
 
              <div class="accordion" id="accordionExample" data-bs-spy="scroll" data-bs-target="#sidebar-wrapper" data-bs-offset="0" tabindex="0">
-    <div class="accordion-item" >
+    <div class="accordion-item" ><!-- -->
       <h2 class="accordion-header" id="headingOne" >
         <button   (click)="selectVideo(1)"  class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"  [ngClass]="{'bg-primary text-white': videosVistos[1]}">
          Clase 1 
@@ -16,10 +17,33 @@
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <strong>TITULO DE CLASE.</strong> DESCRIPCION DE LO QUE SE VA A VER EN LA CLASE
+          <strong>TITULO CLASE 1</strong> DESCRIPCION CLASE 1
         </div>
       </div>
     </div>
+
+<!-- PARA CUANDO SE DE FUNCIONALIDAD DE *NGFOR 
+  <div class="accordion-item" *ngFor="let clase of curso.listaVideos; let i = index">
+                <h2 class="accordion-header" [id]="'heading' + (i + 1)">
+                  <button (click)="selectVideo(clase.id)" class="accordion-button" type="button" data-bs-toggle="collapse" 
+                          [attr.data-bs-target]="'#collapse' + (i + 1)" aria-expanded="false" 
+                          [attr.aria-controls]="'collapse' + (i + 1)" 
+                          [ngClass]="{'bg-primary text-white': videosVistos[clase.id]}">
+                    Clase {{ i + 1 }}  
+                  </button>
+                </h2>
+                <div [id]="'collapse' + (i + 1)" class="accordion-collapse collapse" 
+                     [attr.aria-labelledby]="'heading' + (i + 1)" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>{{ clase.title }}</strong> {{ clase.descripcion }}
+                  </div>
+                </div>
+              </div>
+              -->
+
+
+
+
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingTwo" >
         <button (click)="selectVideo(2)"  class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"  [ngClass]="{'bg-primary text-white': videosVistos[2]}">

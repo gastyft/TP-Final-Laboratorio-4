@@ -1,55 +1,36 @@
 import { Injectable } from '@angular/core';
 import { getStorage, ref, uploadBytes, getDownloadURL, listAll } from 'firebase/storage';
-import { environment } from '../../environment'; // Ajusta la ruta según sea necesario
-import { initializeApp } from 'firebase/app';
-import { Auth, getAuth, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import { getApps, initializeApp } from 'firebase/app';
+import { Auth, getAuth } from 'firebase/auth';
+import { environment } from '../../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
   private storage: any;
-  auth: Auth;
+  private auth: Auth;
 
   constructor() {
-    // Inicializar Firebase
-    const app = initializeApp(environment.firebase);
+    const app = !getApps().length ? initializeApp(environment.firebaseConfig) : getApps()[0];
     this.storage = getStorage(app);
-    this.auth = getAuth(app); // Inicializar Auth
-  }
-
-  // Método para iniciar sesión
-  signIn(email: string, password: string): Promise<void> {
-    return signInWithEmailAndPassword(this.auth, email, password)
-      .then(() => console.log('Usuario autenticado'))
-      .catch((error) => {
-        console.error('Error al autenticar usuario:', error);
-        throw new Error('Error de autenticación: ' + error.message);
-      });
+    this.auth = getAuth(app);
   }
 
   // Método para subir archivos
   uploadFile(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
-      onAuthStateChanged(this.auth, (user) => {
-        if (user) {
-          // Usuario autenticado, puedes subir el archivo
-          const fileRef = ref(this.storage, `uploads/${file.name}`);
-          uploadBytes(fileRef, file)
-            .then(() => getDownloadURL(fileRef))
-            .then((url) => {
-              console.log('Archivo subido, URL:', url);
-              resolve(url); // Devolver la URL del archivo
-            })
-            .catch((error: any) => {
-              console.error('Error al subir el archivo:', error);
-              reject(new Error('Error al subir el archivo: ' + error.message));
-            });
-        } else {
-          console.error('El usuario no está autenticado.');
-          reject(new Error('El usuario no está autenticado.'));
-        }
-      });
+      const fileRef = ref(this.storage, `uploads/${file.name}`);
+      uploadBytes(fileRef, file)
+        .then(() => getDownloadURL(fileRef))
+        .then((url) => {
+          console.log('Archivo subido, URL:', url);
+          resolve(url);
+        })
+        .catch((error) => {
+          console.error('Error al subir el archivo:', error);
+          reject(new Error('Error al subir el archivo: ' + error.message));
+        });
     });
   }
 
@@ -74,12 +55,11 @@ export class StorageService {
 
   // Método para obtener un archivo específico
   getFileUrl(fileName: string): Promise<string> {
-    const fileRef = ref(this.storage, `uploads/${fileName}`); // Ajusta la ruta según sea necesario
+    const fileRef = ref(this.storage, `uploads/${fileName}`);
     return getDownloadURL(fileRef)
       .catch((error) => {
         console.error('Error al obtener la URL del archivo', error);
         throw new Error('Error al obtener la URL: ' + error.message);
       });
   }
-  
 }
