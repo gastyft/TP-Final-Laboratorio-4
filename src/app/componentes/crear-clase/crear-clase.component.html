@@ -1,5 +1,6 @@
 <div class="container">
   <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">CLASE {{1}}</label>
       <label for="exampleFormControlInput1" class="form-label">TITULO CLASE</label>
       <input [(ngModel)]="titulo" type="text" class="form-control" id="exampleFormControlInput1" name="titulo" placeholder="TITULO DE LA CLASE">
   </div>
@@ -19,4 +20,8 @@
       <input type="text" class="form-control" id="exampleFormControlInput2" [(ngModel)]="linkVideo" name="linkVideo" placeholder="link del video">
   </div>
   <button class="btn btn-primary" (click)="guardarClase()">Crear</button>
+  <!--DEBE HABER UN BOTON FINALIZAR CARGA PARA IR CARGANDO LAS CLASES SECUENCIALMENTE
+  Y QUE TE REDIRIJA Al principal con routerLink="/menuPrincipal" (importar RouterLink si se usa standalone) 
+  del profesor y que le renderice el nuevo curso en su menu principal 
+  -->
 </div>

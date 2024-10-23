@@ -14,7 +14,7 @@ export class CrearCursoComponent {
   titulo: string='';
   descripcion:string='';
 
-  guardarCurso(){
+  guardarCurso(){ //LLamar del servicio curso.service a guardar en la lista 
 
 
   }

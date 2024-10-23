@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { getStorage, ref, uploadBytes, getDownloadURL, listAll } from 'firebase/storage';
 import { getApps, initializeApp } from 'firebase/app';
-import { Auth, getAuth } from 'firebase/auth';
 import { environment } from '../../environment';
 
 @Injectable({
@@ -9,15 +8,12 @@ import { environment } from '../../environment';
 })
 export class StorageService {
   private storage: any;
-  private auth: Auth;
 
   constructor() {
     const app = !getApps().length ? initializeApp(environment.firebaseConfig) : getApps()[0];
     this.storage = getStorage(app);
-    this.auth = getAuth(app);
   }
 
-  // Método para subir archivos
   uploadFile(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
       const fileRef = ref(this.storage, `uploads/${file.name}`);
@@ -34,7 +30,6 @@ export class StorageService {
     });
   }
 
-  // Método para listar archivos
   listFiles(): Promise<string[]> {
     const listRef = ref(this.storage, 'uploads/');
     return listAll(listRef)
@@ -53,7 +48,7 @@ export class StorageService {
       });
   }
 
-  // Método para obtener un archivo específico
+
   getFileUrl(fileName: string): Promise<string> {
     const fileRef = ref(this.storage, `uploads/${fileName}`);
     return getDownloadURL(fileRef)

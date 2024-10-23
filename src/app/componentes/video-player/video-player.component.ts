@@ -24,10 +24,10 @@ declare global {
 export class VideoPlayerComponent implements OnChanges {
   @Input() videoId!: number;
   video!: Video;
-  safeUrl: SafeResourceUrl | null = null; // Para la URL saneada
+  safeUrl: SafeResourceUrl | null = null; 
   @Output() videoSeen = new EventEmitter<number>();
-  player: any; // Reproductor de YouTube
-  private isYouTubeApiLoaded = false; // Estado de la API de YouTube
+  player: any; 
+  private isYouTubeApiLoaded = false; 
 
   constructor(private videoService: VideoService, private sanitizer: DomSanitizer) {}
 
@@ -48,11 +48,12 @@ export class VideoPlayerComponent implements OnChanges {
       if (this.video.url.includes('youtube.com')) {
         this.safeUrl = this.sanitizeYoutubeUrl(this.video.url);
         this.loadYouTubeAPI();
+      this.onVideoEnded();
       } else if (this.video.url.endsWith('.mp4')) {
         // Es un video local o de Firebase
         this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.video.url);
       } else {
-        this.safeUrl = null; // No se muestra nada para otros tipos de videos
+        this.safeUrl = null; 
       }
     }
   }
@@ -64,7 +65,7 @@ export class VideoPlayerComponent implements OnChanges {
 
   onVideoEnded() {
     console.log('El video ha terminado:', this.videoId);
-    this.videoSeen.emit(this.videoId); // Emitir cuando termina
+    this.videoSeen.emit(this.videoId); 
   }
 
   loadYouTubeAPI() {
@@ -94,7 +95,7 @@ export class VideoPlayerComponent implements OnChanges {
   private onPlayerStateChange(event: any) {
     if (event.data === YT.PlayerState.ENDED) {
       console.log('El video de YouTube ha terminado de reproducirse.');
-      this.videoSeen.emit(this.videoId); // Emitir si es necesario
+      this.videoSeen.emit(this.videoId); 
     }
   }
 }

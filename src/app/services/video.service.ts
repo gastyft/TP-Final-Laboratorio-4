@@ -12,7 +12,7 @@ export class VideoService {
     {
       id: 1,
       title: 'juana',
-      descripcion:"AWD",
+      descripcion:"Juanita",
       url: 'https://firebasestorage.googleapis.com/v0/b/persistencia-videos.appspot.com/o/uploads%2Fjuana.mp4?alt=media&token=9811c674-86a2-436d-917a-97864602d8ca',//'assets/juana.mp4',
       thumbnailUrl: 'assets/thumbnails/thumb1.jpg',
       isVisto:true,
@@ -20,20 +20,27 @@ export class VideoService {
     { 
       id: 2,
       title: 'puente',
-      descripcion:"AWD",
+      descripcion:"Puente",
       url: 'https://firebasestorage.googleapis.com/v0/b/persistencia-videos.appspot.com/o/uploads%2Fpuente.mp4?alt=media&token=5e5ca639-74d0-40e4-a0ee-b074c2613062',
       thumbnailUrl: 'assets/thumbnails/thumb2.jpg',
       isVisto:true,
     },
     {
       id: 3,
-      title: 'Let me down slowly',
+      title: 'Firebase Storage',
       descripcion:"AWD",
-      url:'https://www.youtube.com/watch?v=50VNCymT-Cs',
+      url:'https://www.youtube.com/watch?v=pKExopQKdyY',
       thumbnailUrl: 'assets/thumbnails/thumb3.jpg', 
       isVisto:true,
     },
-   
+    { 
+      id: 4,
+      title: 'puente 2',
+      descripcion:"Puente 2",
+      url: 'https://firebasestorage.googleapis.com/v0/b/persistencia-videos.appspot.com/o/uploads%2Fpuente.mp4?alt=media&token=5e5ca639-74d0-40e4-a0ee-b074c2613062',
+      thumbnailUrl: 'assets/thumbnails/thumb2.jpg',
+      isVisto:true,
+    }
   ];
 
   guardarVideos(video:Video){
