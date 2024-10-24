@@ -1,5 +1,5 @@
  <div class="d-flex justify-content-center">
-  <div class="mx-auto"> <!--  inicialmete  *ngIf="video.url && video.url.endsWith('.mp4')"-->
+  <div class="mx-auto"> <!--  inicialmente tenia para videos locales  *ngIf="video.url && video.url.endsWith('.mp4')"-->
     <video *ngIf="video.url.includes('firebasestorage')" controls [src]="video.url" width="600" height="600" (ended)="onVideoEnded()">
       Tu navegador no soporta la etiqueta de video.
     </video>
