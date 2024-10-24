@@ -6,6 +6,7 @@ import { Error404Component } from './componentes/error404/error404.component';
 import { NgModule } from '@angular/core';
 import { CrearClaseComponent } from './componentes/crear-clase/crear-clase.component';
 import { CrearCursoComponent } from './componentes/crear-curso/crear-curso.component';
+import { FooterComponent } from './componentes/footer/footer.component';
 
 //import {CloudinaryModule} from '@cloudinary/ng';
  
@@ -17,6 +18,7 @@ export const routes: Routes = [
     {path:'lista-videos', component: ListaComponent},
     {path:'crear-clase', component: CrearClaseComponent},
     {path:'crear-curso', component: CrearCursoComponent},
+    {path:'footer', component: FooterComponent},
     { path: '**', component: Error404Component },
         
 ];

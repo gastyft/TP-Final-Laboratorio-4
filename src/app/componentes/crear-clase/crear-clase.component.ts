@@ -4,6 +4,9 @@ import { VideoService } from '../../services/video.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Video } from '../../models/video.model';
+import swal from 'sweetalert';
+
+
 @Component({
   selector: 'app-crear-clase',
   standalone:true,
@@ -29,13 +32,14 @@ export class CrearClaseComponent {
       console.error("No se ha seleccionado ningún archivo.");
     }
   }
-
+ 
   guardarClase() {
     if (this.video) {
-  
+
       this.storageService.uploadFile(this.video).then((url) => {
         console.log("Archivo subido exitosamente:", url);
         this.linkVideo = url; 
+
         const clase: Video = {
           id: 0,
           title: this.titulo,
@@ -44,38 +48,27 @@ export class CrearClaseComponent {
           thumbnailUrl: "null", 
           isVisto: false,
         };
-
+       if(clase.url.includes("youtube.com") || clase.url.includes('firebasestorage')) {
      
         this.videoService.guardarVideos(clase);
-        alert("Clase creada");
-
-     
-        this.titulo = '';
-        this.descripcion = '';
-        this.linkVideo = '';
-        this.video = null; 
+        
+        swal("Good job!", "Clase creada", "success");
+      }
+       
       }).catch((error) => {
         console.error("Error al subir el archivo:", error);
       });
     } else {
-    
-      const clase: Video = {
-        id: 0,
-        title: this.titulo,
-        descripcion: this.descripcion,
-        url: this.linkVideo, 
-        thumbnailUrl: "null",
-        isVisto: false,
-      };
-
-
-      this.videoService.guardarVideos(clase);
-      alert("Clase creada sin video");
-
-      this.titulo = '';
-      this.descripcion = '';
-      this.linkVideo = '';
-      this.video=null;
+ 
+      swal("Atención", "Falta video", "warning");
+      return;
+  
     }
+    this.titulo = '';
+    this.descripcion = '';
+    this.linkVideo = '';
+    this.video=null;
   }
 }
+
+ 
