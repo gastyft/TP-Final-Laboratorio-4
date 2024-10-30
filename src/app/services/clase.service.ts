@@ -12,19 +12,19 @@ export class ClaseService {
 
   url="http://localhost:8080/clase/"
   getClases():Observable<Clase[]> {
-    return this.http.get<Clase[]>(this.url+"get-clase-list");
+    return this.http.get<Clase[]>(this.url);
   }
   getClaseById(id: number): Observable<Clase> {
-    return this.http.get<Clase>(this.url+"get-clase/"+id);
+    return this.http.get<Clase>(this.url+id);
   }
   createClase(clase: Clase): Observable<string> {
-    return this.http.post<string>(this.url+"crear", clase);
+    return this.http.post<string>(this.url, clase);
   }
   updateClase(clase: Clase): Observable<Clase> {
-    return this.http.put<Clase>(this.url+"editar/"+clase.id, clase);
+    return this.http.put<Clase>(this.url+clase.id, clase);
   }
   deleteClase(id: number): Observable<string> {
-    return this.http.delete<string>(this.url+"borrar/"+id);
+    return this.http.delete<string>(this.url+id);
   }
 
 }

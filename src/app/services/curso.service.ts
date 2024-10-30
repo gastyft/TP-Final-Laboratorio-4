@@ -17,19 +17,19 @@ export class CursoService {
 
   url="http://localhost8080/curso/"
   getCursos(): Observable<Curso[]> {
-    return this.http.get<Curso[]>(this.url+"get-curso-list");
+    return this.http.get<Curso[]>(this.url);
   }
   getCursoById(id: number): Observable<Curso> {
-    return this.http.get<Curso>(this.url+"traer/"+id);
+    return this.http.get<Curso>(this.url+id);
   }
   createCurso(curso: Curso,profesorId: number): Observable<string> {
-    return this.http.post<string>(this.url+"crear/"+profesorId, curso);
+    return this.http.post<string>(this.url+profesorId, curso);
   }
   updateCurso(curso: Curso): Observable<string> {
-    return this.http.put<string>(this.url+"editar/"+curso.id, curso);
+    return this.http.put<string>(this.url+curso.id, curso);
   }
   deleteCurso(id: number): Observable<string> {
-    return this.http.delete<string>(this.url+"borrar/"+id);
+    return this.http.delete<string>(this.url+id);
   }
 
 }

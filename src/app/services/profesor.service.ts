@@ -13,20 +13,20 @@ export class ProfesorService {
   constructor(private http: HttpClient) { }
 
  public getProfesores():Observable<Profesor[]>{
-    return this.http.get<Profesor[]>(this.url+"get-profesor-list");
+    return this.http.get<Profesor[]>(this.url);
   }
   getProfesorById(id:number):Observable<Profesor>{
-    return this.http.get<Profesor>(this.url+"traer/"+id);
+    return this.http.get<Profesor>(this.url+id);
   }
 
   createProfesor(profesor:Profesor):Observable<string>{
-    return this.http.post<string>(this.url+"crear",profesor);
+    return this.http.post<string>(this.url,profesor);
   }
   updateProfesor(profesor:Profesor):Observable<Profesor>{
-    return this.http.put<Profesor>(this.url+"editar/"+profesor.id,profesor);
+    return this.http.put<Profesor>(this.url+profesor.id,profesor);
   }
   deleteProfesor(id:number):Observable<string>{
-    return this.http.delete<string>(this.url+"/borrar/"+id);
+    return this.http.delete<string>(this.url+id);
   }
 
 }

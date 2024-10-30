@@ -14,24 +14,24 @@ export class AlumnoService {
 
 
   getAlumnos(): Observable<Alumno[]> {
-    return this.http.get<Alumno[]>(this.url+"get-alumnos-list");
+    return this.http.get<Alumno[]>(this.url);
   }
   getAlumnoById(id: number): Observable<Alumno> {
-    return this.http.get<Alumno>(this.url+"traer/"+id);
+    return this.http.get<Alumno>(this.url+id);
   }
   createAlumno(alumno: Alumno): Observable<string> {
-    return this.http.post<string>(this.url+"crear", alumno);
+    return this.http.post<string>(this.url, alumno);
   }
   updateAlumno(alumno: Alumno): Observable<Alumno> {
-    return this.http.put<Alumno>(this.url+"editar/"+alumno.id, alumno);
+    return this.http.put<Alumno>(this.url+alumno.id, alumno);
   }
   deleteAlumno(id: number): Observable<string> {
-    return this.http.delete<string>(this.url+"borrar/"+id);
+    return this.http.delete<string>(this.url+id);
   }
   inscribirAlumnoACurso(alumnoId: number, cursoId: number): Observable<string> {
-    return this.http.put<string>(this.url+"inscribir/"+alumnoId+"/"+cursoId, null);
+    return this.http.put<string>(this.url+alumnoId+"inscribir/"+cursoId, null);
   }
   desinscribirAlumnoDeCurso(alumnoId: number, cursoId: number): Observable<string> {
-    return this.http.put<string>(this.url+"desinscribir/"+alumnoId+"/"+cursoId, null);
+    return this.http.put<string>(this.url+alumnoId+"desinscribir/"+cursoId, null);
   }
 }
