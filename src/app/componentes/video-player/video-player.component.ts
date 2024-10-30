@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { Video } from '../../models/video.model';
+import { Clase } from '../../models/clase.model';
 import { VideoService } from '../../services/video.service';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -23,7 +23,7 @@ declare global {
 })
 export class VideoPlayerComponent implements OnChanges {
   @Input() videoId!: number;
-  video!: Video;
+  video!: Clase;
   safeUrl: SafeResourceUrl | null = null; 
   @Output() videoSeen = new EventEmitter<number>();
   player: any; 

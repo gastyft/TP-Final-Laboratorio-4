@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Video } from '../models/video.model';
+import { Clase } from '../models/clase.model';
  
 @Injectable({
   providedIn: 'root'
@@ -8,13 +8,13 @@ export class VideoService {
   constructor( ) { }
 
 
-  private videos: Video[] = [
+  private videos: Clase[] = [
     {
       id: 1,
       title: 'juana',
       descripcion:"Juanita",
       url: 'https://firebasestorage.googleapis.com/v0/b/persistencia-videos.appspot.com/o/uploads%2Fjuana.mp4?alt=media&token=9811c674-86a2-436d-917a-97864602d8ca',//'assets/juana.mp4',
-      thumbnailUrl: 'assets/thumbnails/thumb1.jpg',
+      
       isVisto:true,
         },
     { 
@@ -22,7 +22,7 @@ export class VideoService {
       title: 'puente',
       descripcion:"Puente",
       url: 'https://firebasestorage.googleapis.com/v0/b/persistencia-videos.appspot.com/o/uploads%2Fpuente.mp4?alt=media&token=5e5ca639-74d0-40e4-a0ee-b074c2613062',
-      thumbnailUrl: 'assets/thumbnails/thumb2.jpg',
+      
       isVisto:true,
     },
     {
@@ -30,7 +30,7 @@ export class VideoService {
       title: 'Firebase Storage',
       descripcion:"AWD",
       url:'https://www.youtube.com/watch?v=pKExopQKdyY',
-      thumbnailUrl: 'assets/thumbnails/thumb3.jpg', 
+     
       isVisto:true,
     },
     { 
@@ -38,18 +38,18 @@ export class VideoService {
       title: 'puente 2',
       descripcion:"Puente 2",
       url: 'https://firebasestorage.googleapis.com/v0/b/persistencia-videos.appspot.com/o/uploads%2Fpuente.mp4?alt=media&token=5e5ca639-74d0-40e4-a0ee-b074c2613062',
-      thumbnailUrl: 'assets/thumbnails/thumb2.jpg',
+      
       isVisto:true,
     }
   ];
 
-  guardarVideos(video:Video){
+  guardarVideos(video:Clase){
     video.id = this.videos.length+1;
     this.videos.push(video);
    console.log(this.videos);
   }
 
-  getVideosById(id:number): Video  | undefined{ //LOCAL
+  getVideosById(id:number): Clase  | undefined{ //LOCAL
     console.log(id);
     return this.videos.find(v => v.id === id);
   }

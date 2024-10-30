@@ -19,13 +19,13 @@ export class ListaComponent {
     id: 1,
     title: 'Curso de Angular',
     descripcion: 'Aprende los fundamentos de la programación.',
-    listaVideos: [
+    clases: [
       {
         id: 1,
         title: 'Juana',
         descripcion:"Juanita ",
         url: 'https://firebasestorage.googleapis.com/v0/b/persistencia-videos.appspot.com/o/uploads%2Fjuana.mp4?alt=media&token=9811c674-86a2-436d-917a-97864602d8ca',//'assets/juana.mp4',
-        thumbnailUrl: 'assets/thumbnails/thumb1.jpg',
+      
         isVisto:true,
           },
       { 
@@ -33,7 +33,7 @@ export class ListaComponent {
         title: 'Puente',
         descripcion:"Puente caminata",
         url: 'https://firebasestorage.googleapis.com/v0/b/persistencia-videos.appspot.com/o/uploads%2Fpuente.mp4?alt=media&token=5e5ca639-74d0-40e4-a0ee-b074c2613062',
-        thumbnailUrl: 'assets/thumbnails/thumb2.jpg',
+       
         isVisto:true,
       },
       {
@@ -41,7 +41,7 @@ export class ListaComponent {
         title: 'Firebase Storage',
         descripcion:"como persistir archivos en firebase",
         url:'https://www.youtube.com/watch?v=pKExopQKdyY&t=1946s',
-        thumbnailUrl: 'assets/thumbnails/thumb3.jpg', 
+       
         isVisto:true,
       },
       { 
@@ -49,7 +49,7 @@ export class ListaComponent {
         title: 'puente 2',
         descripcion:"Puente caminata 2",
         url: 'https://firebasestorage.googleapis.com/v0/b/persistencia-videos.appspot.com/o/uploads%2Fpuente.mp4?alt=media&token=5e5ca639-74d0-40e4-a0ee-b074c2613062',
-        thumbnailUrl: 'assets/thumbnails/thumb2.jpg',
+   
         isVisto:true,
       },
     ],
@@ -61,4 +61,7 @@ export class ListaComponent {
   marcarVideoVisto(videoId: number) {
     this.videosVistos[videoId] = true;  
   }
+//Crear metodo para marcar el video como visto, dependiendo del alumno
+
+
 }

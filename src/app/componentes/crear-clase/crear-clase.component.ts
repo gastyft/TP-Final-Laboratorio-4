@@ -3,7 +3,7 @@ import { StorageService } from '../../services/firebase-storage.service';
 import { VideoService } from '../../services/video.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Video } from '../../models/video.model';
+import { Clase } from '../../models/clase.model';
 import swal from 'sweetalert';
 
 
@@ -40,12 +40,11 @@ export class CrearClaseComponent {
         console.log("Archivo subido exitosamente:", url);
         this.linkVideo = url; 
 
-        const clase: Video = {
+        const clase: Clase = {
           id: 0,
           title: this.titulo,
           descripcion: this.descripcion,
           url: this.linkVideo,
-          thumbnailUrl: "null", 
           isVisto: false,
         };
        if(clase.url.includes("youtube.com") || clase.url.includes('firebasestorage')) {

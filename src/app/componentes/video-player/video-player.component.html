@@ -1,11 +1,29 @@
- <div class="d-flex justify-content-center">
-  <div class="mx-auto"> <!--  inicialmente tenia para videos locales  *ngIf="video.url && video.url.endsWith('.mp4')"-->
-    <video *ngIf="video.url.includes('firebasestorage')" controls [src]="video.url" width="600" height="600" (ended)="onVideoEnded()">
+<!--  inicialmente tenia para videos locales  *ngIf="video.url && video.url.endsWith('.mp4')"-->
+<!-- lo comentado funciona bien. lo de abajo es para que muestre GIF de error en caso de no cargar
+  <div class="d-flex justify-content-center">
+    <div class="mx-auto"> 
+      <video *ngIf="video.url.includes('firebasestorage')" controls [src]="video.url" width="600" height="600" (ended)="onVideoEnded()">
+        Tu navegador no soporta la etiqueta de video.
+      </video>
+      
+      
+      <iframe *ngIf="safeUrl && video.url.includes('youtube.com')" [src]="safeUrl" width="760" height="515" frameborder="0" allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+-->
+<div class="d-flex justify-content-center">
+  <div class="mx-auto">
+    <video *ngIf="video.url.includes('firebasestorage'); else errorTemplate" controls [src]="video.url" width="600" height="600" (ended)="onVideoEnded()">
       Tu navegador no soporta la etiqueta de video.
     </video>
 
-    
-    <iframe *ngIf="safeUrl && video.url.includes('youtube.com')" [src]="safeUrl" width="760" height="515" frameborder="0" allowfullscreen>
+    <iframe *ngIf="safeUrl && video.url.includes('youtube.com'); else errorTemplate" [src]="safeUrl" width="760" height="515" frameborder="0" allowfullscreen>
     </iframe>
+
+    <!-- Plantilla para el GIF en caso de error -->
+    <ng-template #errorTemplate>
+      <img src="assets/no-signal.gif" alt="No Signal" width="600" height="600">
+    </ng-template>
   </div>
 </div>
