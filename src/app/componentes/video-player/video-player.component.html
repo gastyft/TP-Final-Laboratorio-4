@@ -14,16 +14,36 @@
 -->
 <div class="d-flex justify-content-center">
   <div class="mx-auto">
-    <video *ngIf="video.url.includes('firebasestorage'); else errorTemplate" controls [src]="video.url" width="600" height="600" (ended)="onVideoEnded()">
+    <!-- Video de Firebase con manejo de error -->
+    <video 
+      *ngIf="!videoError && video.url.includes('firebasestorage')" 
+      controls 
+      [src]="video.url" 
+      width="600" 
+      height="600" 
+      (ended)="onVideoEnded()" 
+      (error)="videoError = true"
+    >
       Tu navegador no soporta la etiqueta de video.
     </video>
 
-    <iframe *ngIf="safeUrl && video.url.includes('youtube.com'); else errorTemplate" [src]="safeUrl" width="760" height="515" frameborder="0" allowfullscreen>
-    </iframe>
+    <!-- iFrame de YouTube con manejo de error -->
+    <iframe 
+      *ngIf="!videoError && safeUrl && video.url.includes('youtube.com')" 
+      [src]="safeUrl" 
+      width="760" 
+      height="515" 
+      frameborder="0" 
+      allowfullscreen 
+      (error)="videoError = true"
+    ></iframe>
 
     <!-- Plantilla para el GIF en caso de error -->
     <ng-template #errorTemplate>
       <img src="assets/no-signal.gif" alt="No Signal" width="600" height="600">
     </ng-template>
+
+    <!-- Mostrar el GIF cuando hay error en cualquier elemento de video o iframe -->
+    <ng-container *ngIf="videoError" [ngTemplateOutlet]="errorTemplate"></ng-container>
   </div>
 </div>

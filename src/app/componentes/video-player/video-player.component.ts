@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, HostListener  } from '@angular/core';
 import { Clase } from '../../models/clase.model';
 import { VideoService } from '../../services/video.service';
 import { RouterLink } from '@angular/router';
@@ -36,7 +36,11 @@ export class VideoPlayerComponent implements OnChanges {
       this.loadVideo(this.videoId);
     }
   }
-
+  videoError = false;
+  @HostListener('window:online', ['$event'])
+  onReconnect() {
+    this.videoError = false;
+  }
   loadVideo(videoId: number) {
     const vid = this.videoService.getVideosById(videoId);
     if (!vid) {
