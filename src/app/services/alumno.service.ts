@@ -10,7 +10,7 @@ export class AlumnoService {
 
   constructor(private http: HttpClient) { }
 
-  url="http://localhost:8080/alumnos/"
+  url="http://localhost:8080/alumno/"
 
 
   getAlumnos(): Observable<Alumno[]> {

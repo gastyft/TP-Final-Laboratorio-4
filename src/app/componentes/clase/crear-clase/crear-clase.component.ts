@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { StorageService } from '../../services/firebase-storage.service';
-import { VideoService } from '../../services/video.service';
+import { StorageService } from '../../../services/firebase-storage.service';
+import { VideoService } from '../../../services/video.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Clase } from '../../models/clase.model';
+import { Clase } from '../../../models/clase.model';
 import swal from 'sweetalert';
 
 

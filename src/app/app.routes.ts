@@ -1,12 +1,12 @@
 import {  RouterModule, Routes } from '@angular/router';
-import { PrincipalComponent } from './componentes/principal/principal.component';
-import { VideoPlayerComponent } from './componentes/video-player/video-player.component';
-import { ListaComponent } from './componentes/lista/lista.component';
-import { Error404Component } from './componentes/error404/error404.component';
+import { PrincipalComponent } from './componentes/contenedora/principal/principal.component';
+import { VideoPlayerComponent } from './componentes/clase/video-player/video-player.component';
+import { ListaComponent } from './componentes/curso/lista/lista.component';
+import { Error404Component } from './componentes/contenedora/error404/error404.component';
 import { NgModule } from '@angular/core';
-import { CrearClaseComponent } from './componentes/crear-clase/crear-clase.component';
-import { CrearCursoComponent } from './componentes/crear-curso/crear-curso.component';
-import { FooterComponent } from './componentes/footer/footer.component';
+import { CrearClaseComponent } from './componentes/clase/crear-clase/crear-clase.component';
+import { CrearCursoComponent } from './componentes/curso/crear-curso/crear-curso.component';
+import { FooterComponent } from './componentes/contenedora/footer/footer.component';
 
 //import {CloudinaryModule} from '@cloudinary/ng';
  

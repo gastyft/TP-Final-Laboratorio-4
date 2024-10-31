@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, HostListener  } from '@angular/core';
-import { Clase } from '../../models/clase.model';
-import { VideoService } from '../../services/video.service';
+import { Clase } from '../../../models/clase.model';
+import { VideoService } from '../../../services/video.service';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';

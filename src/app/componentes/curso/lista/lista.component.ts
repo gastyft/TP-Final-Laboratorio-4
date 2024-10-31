@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Curso } from '../../models/curso.model';
+import { Curso } from '../../../models/curso.model';
 @Component({
   selector: 'app-lista',
   standalone: true,

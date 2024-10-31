@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
-import { ListaComponent } from '../lista/lista.component';
-import { VideoPlayerComponent } from '../video-player/video-player.component';
+import { ListaComponent } from '../../curso/lista/lista.component';
+import { VideoPlayerComponent } from '../../clase/video-player/video-player.component';
 import { RouterLink } from '@angular/router';
 import { Error404Component } from "../error404/error404.component";
 import { DomSanitizer } from '@angular/platform-browser';
