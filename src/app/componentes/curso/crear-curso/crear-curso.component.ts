@@ -5,16 +5,17 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CursoService } from '../../../services/curso.service';
 import { Curso } from '../../../models/curso.model';
 import { Clase } from '../../../models/clase.model';
+import { NavProfesorComponent } from '../../profesor/nav-profesor/nav-profesor.component';
 
 @Component({
   selector: 'app-crear-curso',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink,],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink,NavProfesorComponent],
   templateUrl: './crear-curso.component.html',
   styleUrls: ['./crear-curso.component.css']
 })
 export class CrearCursoComponent implements OnInit {
-  
+  /*
   titulo: FormControl;
   descripcion: FormControl;
   clases: Clase[] = [];
@@ -25,10 +26,7 @@ export class CrearCursoComponent implements OnInit {
     this.titulo = new FormControl('', Validators.required);
     this.descripcion = new FormControl('', Validators.required);
   }
-  ngOnInit() {
-    this.idProfesor  = this.route.snapshot.params['id']; 
- 
-  }
+
 
   guardarCurso(): void {
     if (this.titulo.valid && this.descripcion.valid) {
@@ -42,5 +40,9 @@ export class CrearCursoComponent implements OnInit {
       console.log('Formulario no válido');
     }
   }
+*/
+ngOnInit() {
+  // this.idProfesor  = this.route.snapshot.params['id']; 
 
+ }
 }
