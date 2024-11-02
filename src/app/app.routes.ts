@@ -9,6 +9,9 @@ import { CrearCursoComponent } from './componentes/curso/crear-curso/crear-curso
 import { FooterComponent } from './componentes/contenedora/footer/footer.component';
 import { EditarPerfilComponent } from './componentes/profesor/editar-perfil/editar-perfil.component';
 import { LoginComponent } from './componentes/login/login/login.component';
+import { NavProfesorComponent } from './componentes/profesor/nav-profesor/nav-profesor.component';
+import { PrincipalProfesorComponent } from './componentes/profesor/principal-profesor/principal-profesor.component';
+import { ListarCursosComponent } from './componentes/profesor/listar-cursos/listar-cursos.component';
 
 //import {CloudinaryModule} from '@cloudinary/ng';
  
@@ -23,6 +26,9 @@ export const routes: Routes = [
     {path:'footer', component: FooterComponent},
     {path:'editar-perfil',component:EditarPerfilComponent},
     {path:'login', component: LoginComponent},
+    {path:'nav-profesor', component: NavProfesorComponent,pathMatch: 'full'},
+    {path:'principal-profesor',component: PrincipalProfesorComponent, pathMatch: 'full'}, // principal-profesor/:id
+    {path:'listar-cursos', component: ListarCursosComponent},
     { path: '**', component: Error404Component },
         
 ];
