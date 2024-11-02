@@ -45,7 +45,7 @@ export class CrearClaseComponent {
           title: this.titulo,
           descripcion: this.descripcion,
           url: this.linkVideo,
-          isVisto: false,
+   
         };
        if(clase.url.includes("youtube.com") || clase.url.includes('firebasestorage')) {
      
