@@ -8,6 +8,7 @@ import { CrearClaseComponent } from './componentes/clase/crear-clase/crear-clase
 import { CrearCursoComponent } from './componentes/curso/crear-curso/crear-curso.component';
 import { FooterComponent } from './componentes/contenedora/footer/footer.component';
 import { EditarPerfilComponent } from './componentes/profesor/editar-perfil/editar-perfil.component';
+import { LoginComponent } from './componentes/login/login/login.component';
 
 //import {CloudinaryModule} from '@cloudinary/ng';
  
@@ -21,6 +22,7 @@ export const routes: Routes = [
     {path:'crear-curso', component: CrearCursoComponent},
     {path:'footer', component: FooterComponent},
     {path:'editar-perfil',component:EditarPerfilComponent},
+    {path:'login', component: LoginComponent},
     { path: '**', component: Error404Component },
         
 ];

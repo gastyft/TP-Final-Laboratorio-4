@@ -1,0 +1,104 @@
+.login-estilo {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #6bb6e2 0%, #f1f3f5 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+.login.estilo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/white-paper.png');
+    opacity: 0.1;
+    filter: blur(15px);
+    z-index: 0;
+}
+
+.LibroVirtual-image {
+    position: absolute;
+    left: 5%;
+    top: 15%;
+    width: 150px;
+}
+
+.CarpetaVirtual-image {
+    position: absolute;
+    right: 5%;
+    bottom: 15%;
+    width: 150px;
+}
+
+.form-container {
+    background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400');
+    background-size: cover; /* Mantener la cobertura total /
+    background-position: center top; / Ajustar la posición para ocultar la parte inferior */
+    padding: 80px 100px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+}
+
+h2.form-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ecf0f1;
+}
+
+input[type="text"], input[type="password"], select {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, select:focus {
+    border-color: #ffffff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.button-acceder {
+    background-color: #007BFF;
+    color: #FFFFFF;
+    padding: 16px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 100%;
+    font-weight: bold;
+    margin-top: 10px; /* Separar botones */
+}
+
+.button-acceder:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
