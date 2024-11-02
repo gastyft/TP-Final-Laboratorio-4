@@ -5,8 +5,8 @@ export class Curso {
   title: string;
   descripcion: string;
   clases: Clase[]; 
-  constructor(id: number, title: string, descripcion: string){
-    this.id = id;
+  constructor( title: string, descripcion: string){
+   
     this.title = title;
     this.descripcion = descripcion;
     this.clases = [];

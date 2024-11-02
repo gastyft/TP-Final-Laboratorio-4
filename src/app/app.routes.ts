@@ -1,5 +1,5 @@
 import {  RouterModule, Routes } from '@angular/router';
-import { PrincipalComponent } from './componentes/contenedora/principal/principal.component';
+import { PrincipalComponent } from './componentes/contenedora/vista-video-clase/principal.component';
 import { VideoPlayerComponent } from './componentes/clase/video-player/video-player.component';
 import { ListaComponent } from './componentes/curso/lista/lista.component';
 import { Error404Component } from './componentes/contenedora/error404/error404.component';
