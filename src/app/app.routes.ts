@@ -14,25 +14,41 @@ import { PrincipalProfesorComponent } from './componentes/profesor/principal-pro
 import { ListarCursosComponent } from './componentes/profesor/listar-cursos/listar-cursos.component';
 import { EditarCursoComponent } from './componentes/curso/editar-curso/editar-curso.component';
 import { LoginComponent } from './componentes/login/login.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
+import { PrincipalAlumnoComponent } from './componentes/alumno/principal-alumno/principal-alumno.component';
+import { NavAlumnoComponent } from './componentes/alumno/nav-alumno/nav-alumno.component';
+import { ListarCursosAlumnoComponent } from './componentes/alumno/listar-cursos-alumno/listar-cursos-alumno.component';
  
 
-//import {CloudinaryModule} from '@cloudinary/ng';
+ 
  
 export const routes: Routes = [
-
+    //ROUTING A PAGINA DEFECTO
     {path:'', component: PrincipalComponent},
-    {path:'principal', component: PrincipalComponent},
+    //CLASE
+    {path:'principal-alumno/:idAlumno/principal/:idCurso', component: PrincipalComponent}, //Se le deberia pasar el curso y ver si el idAlumno
     {path:'videoPlayer/:id', component: VideoPlayerComponent},  
-    {path:'lista-videos', component: ListaComponent},
     {path:'crear-clase', component: CrearClaseComponent}, //Agregar id de curso 
+    //CURSO
+    {path:'lista-videos', component: ListaComponent}, //PARTE DE PRINCIPAL DE CLASES
     {path:'principal-profesor/:idProfesor/crear-curso', component: CrearCursoComponent},
+    {path:'principal-profesor/:idProfesor/editar-curso/:idCurso',component: EditarCursoComponent,},
+    //COMPLEMENTOS
     {path:'footer', component: FooterComponent},
     {path:'editar-perfil/:id',component:EditarPerfilComponent},
+    //LOGIN Y REGISTRO
     {path:'login', component: LoginComponent},
-    {path:'nav-profesor', component: NavProfesorComponent,pathMatch: 'full'},
+    {path:'registro',component:RegistroComponent},
+    //PROFESOR
+    {path:'nav-profesor/:idProfesor', component: NavProfesorComponent,pathMatch: 'full'},
     {path:'principal-profesor/:id',component: PrincipalProfesorComponent, pathMatch: 'full'}, // principal-profesor/:id
     {path:'listar-cursos', component: ListarCursosComponent},
-    {path:'principal-profesor/:idProfesor/editar-curso/:idCurso',component: EditarCursoComponent,},
+    //ALUMNO
+    {path:'principal-alumno/:idAlumno', component: PrincipalAlumnoComponent,pathMatch: 'full'},
+    {path:'nav-alumno/:idAlumno', component: NavAlumnoComponent},
+    {path:'listar-cursos-alumno',component: ListarCursosAlumnoComponent},
+
+    //ROUTING DE ERROR
     { path: '**', component: Error404Component },
         
 ];

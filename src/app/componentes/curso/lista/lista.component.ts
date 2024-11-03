@@ -12,9 +12,8 @@ import { Curso } from '../../../models/curso.model';
 export class ListaComponent {
   @Output() videoSeleccionado = new EventEmitter<number>(); 
   @Input()  videosVistos: { [key: number]: boolean } = {};
-
- 
-  curso: Curso = {
+  @Input() curso!: Curso;
+  curso1: Curso = {
     id: 1,
     titulo: 'Curso de Angular',
     descripcion: 'Aprende los fundamentos de la programación.',

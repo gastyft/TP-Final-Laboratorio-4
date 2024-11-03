@@ -4,6 +4,7 @@ import { VideoService } from '../../../services/video.service';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ClaseService } from '../../../services/clase.service';
 
 declare var YT: any;
 
@@ -29,7 +30,7 @@ export class VideoPlayerComponent implements OnChanges {
   player: any; 
   private isYouTubeApiLoaded = false; 
 
-  constructor(private videoService: VideoService, private sanitizer: DomSanitizer) {}
+  constructor(private videoService: VideoService, private sanitizer: DomSanitizer,private claseService: ClaseService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['videoId'] && this.videoId !== undefined) {
@@ -41,6 +42,7 @@ export class VideoPlayerComponent implements OnChanges {
   onReconnect() {
     this.videoError = false;
   }
+  /* ORIGINAL HARDCODEADO
   loadVideo(videoId: number) {
     const vid = this.videoService.getVideosById(videoId);
     if (!vid) {
@@ -60,6 +62,29 @@ export class VideoPlayerComponent implements OnChanges {
         this.safeUrl = null; 
       }
     }
+  }
+    */
+  loadVideo(videoId: number) {
+    this.claseService.getClaseById(videoId).subscribe(
+      (vid) => {
+        this.video = vid;
+
+        // Comprobar si es un video de YouTube
+        if (this.video.url.includes('youtube.com')) {
+          this.safeUrl = this.sanitizeYoutubeUrl(this.video.url);
+          this.loadYouTubeAPI();
+          this.onVideoEnded();
+        } else if (this.video.url.endsWith('.mp4')) {
+          // Es un video local o de Firebase
+          this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.video.url);
+        } else {
+          this.safeUrl = null; 
+        }
+      },
+      (error) => {
+        console.error(`Error al obtener el video con ID ${videoId}:`, error);
+      }
+    );
   }
 
   sanitizeYoutubeUrl(url: string): SafeResourceUrl {
