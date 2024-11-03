@@ -1,46 +1,17 @@
 <div class="container">
     <div class="cards">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title 1</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle 1</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <button class="btn btn-4" routerLink="/editar-perfil">Editar Curso</button> 
-                <a href="#" class="card-link">Another link</a>
-            </div>
+      <div class="card" *ngFor="let curso of datosCursos">
+        <div class="card-body">
+          <h5 class="card-title">{{ curso.titulo || 'Sin título' }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ curso.descripcion || 'Sin descripción' }}</h6>
+          <p class="card-text">
+            Clases: {{ curso.clases.length }}
+          </p>
+          <button class="btn btn-4" routerLink="/editar-curso/{{curso.id}}">Editar Curso</button> <!--ES EDITAR CURSO-->
+          <button class="btn btn-4" routerLink="/editar-perfil">Alguna Funcion</button> 
         </div>
-
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title 2</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle 2</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <button class="btn btn-4">Editar Curso</button>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title 3</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle 3</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title 4</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle 4</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-
-        <!-- Agrega más tarjetas según sea necesario -->
+      </div>
     </div>
-</div>
-<br><br>
+  </div>
+  <br><br>
+  

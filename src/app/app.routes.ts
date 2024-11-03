@@ -8,10 +8,12 @@ import { CrearClaseComponent } from './componentes/clase/crear-clase/crear-clase
 import { CrearCursoComponent } from './componentes/curso/crear-curso/crear-curso.component';
 import { FooterComponent } from './componentes/contenedora/footer/footer.component';
 import { EditarPerfilComponent } from './componentes/profesor/editar-perfil/editar-perfil.component';
-import { LoginComponent } from './componentes/login/login/login.component';
+ 
 import { NavProfesorComponent } from './componentes/profesor/nav-profesor/nav-profesor.component';
 import { PrincipalProfesorComponent } from './componentes/profesor/principal-profesor/principal-profesor.component';
 import { ListarCursosComponent } from './componentes/profesor/listar-cursos/listar-cursos.component';
+import { EditarCursoComponent } from './componentes/curso/editar-curso/editar-curso.component';
+import { LoginComponent } from './componentes/login/login.component';
  
 
 //import {CloudinaryModule} from '@cloudinary/ng';
@@ -22,14 +24,15 @@ export const routes: Routes = [
     {path:'principal', component: PrincipalComponent},
     {path:'videoPlayer/:id', component: VideoPlayerComponent},  
     {path:'lista-videos', component: ListaComponent},
-    {path:'crear-clase', component: CrearClaseComponent},
+    {path:'crear-clase', component: CrearClaseComponent}, //Agregar id de curso 
     {path:'crear-curso', component: CrearCursoComponent},
     {path:'footer', component: FooterComponent},
-    {path:'editar-perfil',component:EditarPerfilComponent},
+    {path:'editar-perfil/:id',component:EditarPerfilComponent},
     {path:'login', component: LoginComponent},
     {path:'nav-profesor', component: NavProfesorComponent,pathMatch: 'full'},
-    {path:'principal-profesor',component: PrincipalProfesorComponent, pathMatch: 'full'}, // principal-profesor/:id
+    {path:'principal-profesor/:id',component: PrincipalProfesorComponent, pathMatch: 'full'}, // principal-profesor/:id
     {path:'listar-cursos', component: ListarCursosComponent},
+    {path:'editar-curso/:id',component: EditarCursoComponent},
     { path: '**', component: Error404Component },
         
 ];

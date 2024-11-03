@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavProfesorComponent } from '../nav-profesor/nav-profesor.component';
 import { ListarCursosComponent } from '../listar-cursos/listar-cursos.component';
+ 
+import { ProfesorService } from '../../../services/profesor.service';
 
 @Component({
   selector: 'app-principal-profesor',
@@ -10,5 +12,6 @@ import { ListarCursosComponent } from '../listar-cursos/listar-cursos.component'
   styleUrl: './principal-profesor.component.css'
 })
 export class PrincipalProfesorComponent {
-
+  
+ 
 }

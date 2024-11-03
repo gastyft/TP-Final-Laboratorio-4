@@ -13,8 +13,7 @@ export class ListaComponent {
   @Output() videoSeleccionado = new EventEmitter<number>(); 
   @Input()  videosVistos: { [key: number]: boolean } = {};
 
-  
-
+ 
   curso: Curso = {
     id: 1,
     titulo: 'Curso de Angular',
@@ -54,6 +53,9 @@ export class ListaComponent {
       },
     ],
   };
+
+  
+
   selectVideo(videoId: number):void {
     this.videoSeleccionado.emit(videoId); 
   }
