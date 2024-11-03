@@ -23,7 +23,7 @@ export class AlumnoService {
     return this.http.post<string>(this.url, alumno, { responseType: 'text' as 'json' });
   }
   updateAlumno(alumno: Alumno): Observable<Alumno> {
-    return this.http.put<Alumno>(this.url+alumno.id, alumno);
+    return this.http.put<Alumno>(this.url+alumno.id+`?nombre=${alumno.nombre}&apellido=${alumno.apellido}&email=${alumno.email}&edad=${alumno.edad}`, alumno);
   }
   deleteAlumno(id: number): Observable<string> {
     return this.http.delete<string>(this.url+id, { responseType: 'text' as 'json' });

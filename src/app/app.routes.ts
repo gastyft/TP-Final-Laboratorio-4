@@ -25,14 +25,14 @@ export const routes: Routes = [
     {path:'videoPlayer/:id', component: VideoPlayerComponent},  
     {path:'lista-videos', component: ListaComponent},
     {path:'crear-clase', component: CrearClaseComponent}, //Agregar id de curso 
-    {path:'crear-curso', component: CrearCursoComponent},
+    {path:'principal-profesor/:idProfesor/crear-curso', component: CrearCursoComponent},
     {path:'footer', component: FooterComponent},
     {path:'editar-perfil/:id',component:EditarPerfilComponent},
     {path:'login', component: LoginComponent},
     {path:'nav-profesor', component: NavProfesorComponent,pathMatch: 'full'},
     {path:'principal-profesor/:id',component: PrincipalProfesorComponent, pathMatch: 'full'}, // principal-profesor/:id
     {path:'listar-cursos', component: ListarCursosComponent},
-    {path:'editar-curso/:id',component: EditarCursoComponent,},
+    {path:'principal-profesor/:idProfesor/editar-curso/:idCurso',component: EditarCursoComponent,},
     { path: '**', component: Error404Component },
         
 ];

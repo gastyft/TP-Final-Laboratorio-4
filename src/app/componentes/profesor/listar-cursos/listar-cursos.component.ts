@@ -12,14 +12,16 @@ import { ProfesorService } from '../../../services/profesor.service';
 })
 export class ListarCursosComponent implements OnInit{
   datosCursos: any[] = [];  // Almacena los cursos del profesor
-   
+   datoProfesor:any;
   constructor(private profesorService: ProfesorService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     const idProfesor = this.route.snapshot.paramMap.get('id');  // Obtiene el ID del profesor de la URL
     if (idProfesor) {
       this.profesorService.getProfesorById(+idProfesor).subscribe((profesor) => {
+        this.datoProfesor= profesor;
         this.datosCursos = profesor.cursosQueDicta;  // Asigna los cursos a datosCursos
+        
       });
     }
   }

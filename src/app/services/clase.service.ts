@@ -21,7 +21,7 @@ export class ClaseService {
     return this.http.post<string>(this.url, clase, { responseType: 'text' as 'json' });
   }
   updateClase(clase: Clase): Observable<Clase> {
-    return this.http.put<Clase>(this.url+clase.id, clase);
+    return this.http.put<Clase>(this.url+clase.id+`?title=${clase.title}&descripcion=${clase.descripcion}&url=${clase.url}`, clase);
   }
   deleteClase(id: number): Observable<string> {
     return this.http.delete<string>(this.url+id, { responseType: 'text' as 'json' }); 

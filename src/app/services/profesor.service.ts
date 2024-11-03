@@ -23,8 +23,8 @@ export class ProfesorService {
     return this.http.post<string>(this.url,profesor, { responseType: 'text' as 'json' }); 
   }
   updateProfesor(profesor:Profesor):Observable<Profesor>{
-    return this.http.put<Profesor>(this.url+profesor.id,profesor);
-  }
+    return this.http.put<Profesor>(this.url+ profesor.id+`?nombre=${profesor.nombre}&apellido=${profesor.apellido}&email=${profesor.email}&edad=${profesor.edad}`,profesor);
+  } 
   deleteProfesor(id:number):Observable<string>{
     return this.http.delete<string>(this.url+id, { responseType: 'text' as 'json' });
   }

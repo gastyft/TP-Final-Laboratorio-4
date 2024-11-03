@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CursoService } from '../../../services/curso.service';
 import { Curso } from '../../../models/curso.model';
 import { Clase } from '../../../models/clase.model';
 import { NavProfesorComponent } from '../../profesor/nav-profesor/nav-profesor.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import swal from 'sweetalert';
 @Component({
   selector: 'app-crear-curso',
   standalone: true,
@@ -23,7 +23,7 @@ export class CrearCursoComponent implements OnInit {
   crearCurso: FormGroup;
   idProfesor!:number;
 
-  constructor(  private cursoService: CursoService ,private route: ActivatedRoute,private fb: FormBuilder ) {
+  constructor(  private cursoService: CursoService ,private route: ActivatedRoute,private fb: FormBuilder,private router: Router) {
     this.crearCurso = this.fb.group({
       titulo: ['Tizi', Validators.required], 
       descripcion: ['Un curso para aprender Angular', Validators.required]  
@@ -37,7 +37,8 @@ export class CrearCursoComponent implements OnInit {
 
         this.cursoService.createCurso(cursoData, 1 /*this.idProfesor*/).subscribe(response => {
             console.log('Curso guardado' + response);  //Cambiar por SWAL
-             alert("Curso creado ");
+             swal("Curso Guardado","","success");
+             this.router.navigate(['/principal-profesor',this.idProfesor]);
          });
     }  
   }
@@ -46,7 +47,7 @@ export class CrearCursoComponent implements OnInit {
 
  
   ngOnInit() {
-    this.idProfesor = this.route.snapshot.params['id']; // Obtén el idProfesor de la ruta
+    this.idProfesor = this.route.snapshot.params['idProfesor']; // Obtén el idProfesor de la ruta
     // Aquí puedes cargar las clases si es necesario, por ejemplo:
     // this.cursoService.getClases().subscribe(clases => this.clases = clases);
   }
