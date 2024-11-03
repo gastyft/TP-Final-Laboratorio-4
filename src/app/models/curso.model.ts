@@ -2,12 +2,12 @@ import { Clase } from './clase.model';
 
 export class Curso {
   id?: number;
-  title: string;
+  titulo: string;
   descripcion: string;
   clases: Clase[]; 
-  constructor( title: string, descripcion: string){
+  constructor( titulo: string, descripcion: string){
    
-    this.title = title;
+    this.titulo = titulo;
     this.descripcion = descripcion;
     this.clases = [];
   }

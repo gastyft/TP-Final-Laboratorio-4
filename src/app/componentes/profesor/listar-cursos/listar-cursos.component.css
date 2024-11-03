@@ -16,3 +16,14 @@
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+.btn-4 {
+    background-color: #9be2d7; 
+    font-weight: bold; 
+    margin: 2%;
+   
+}
+.btn-4:hover {
+    background-color: #92e5d9;
+    transform: scale(1.05);
+}
+ 

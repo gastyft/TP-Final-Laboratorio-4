@@ -17,7 +17,7 @@ export class ListaComponent {
 
   curso: Curso = {
     id: 1,
-    title: 'Curso de Angular',
+    titulo: 'Curso de Angular',
     descripcion: 'Aprende los fundamentos de la programación.',
     clases: [
       {

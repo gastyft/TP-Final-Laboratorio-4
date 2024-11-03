@@ -20,18 +20,18 @@ export class AlumnoService {
     return this.http.get<Alumno>(this.url+id);
   }
   createAlumno(alumno: Alumno): Observable<string> {
-    return this.http.post<string>(this.url, alumno);
+    return this.http.post<string>(this.url, alumno, { responseType: 'text' as 'json' });
   }
   updateAlumno(alumno: Alumno): Observable<Alumno> {
     return this.http.put<Alumno>(this.url+alumno.id, alumno);
   }
   deleteAlumno(id: number): Observable<string> {
-    return this.http.delete<string>(this.url+id);
+    return this.http.delete<string>(this.url+id, { responseType: 'text' as 'json' });
   }
   inscribirAlumnoACurso(alumnoId: number, cursoId: number): Observable<string> {
-    return this.http.put<string>(this.url+alumnoId+"inscribir/"+cursoId, null);
+    return this.http.put<string>(this.url+alumnoId+"inscribir/"+cursoId, null, { responseType: 'text' as 'json' });
   }
   desinscribirAlumnoDeCurso(alumnoId: number, cursoId: number): Observable<string> {
-    return this.http.put<string>(this.url+alumnoId+"desinscribir/"+cursoId, null);
+    return this.http.put<string>(this.url+alumnoId+"desinscribir/"+cursoId, null, { responseType: 'text' as 'json' });
   }
 }

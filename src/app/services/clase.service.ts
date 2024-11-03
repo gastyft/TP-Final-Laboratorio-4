@@ -18,13 +18,13 @@ export class ClaseService {
     return this.http.get<Clase>(this.url+id);
   }
   createClase(clase: Clase): Observable<string> {
-    return this.http.post<string>(this.url, clase);
+    return this.http.post<string>(this.url, clase, { responseType: 'text' as 'json' });
   }
   updateClase(clase: Clase): Observable<Clase> {
     return this.http.put<Clase>(this.url+clase.id, clase);
   }
   deleteClase(id: number): Observable<string> {
-    return this.http.delete<string>(this.url+id);
+    return this.http.delete<string>(this.url+id, { responseType: 'text' as 'json' }); 
   }
 
 }

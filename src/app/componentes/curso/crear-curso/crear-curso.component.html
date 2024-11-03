@@ -1,20 +1,22 @@
 <app-nav-profesor></app-nav-profesor>
 <div class="container">
-    <form > <!--(ngSubmit)="guardarCurso( )"-->
-      <div class="mb-3">
-        <label for="titulo" class="form-label">TITULO CURSO</label>
-        <input   type="text" class="form-control" id="titulo" placeholder="TITULO DE LA CLASE">
-       
+  <form [formGroup]="crearCurso" (ngSubmit)="guardarCurso()"> <!-- Usa formGroup y ngSubmit -->
+    <div class="mb-3">
+      <label for="titulo" class="form-label">TITULO CURSO</label>
+      <input type="text" class="form-control" id="titulo" formControlName="titulo" placeholder="TITULO DE LA CLASE">
+      <div *ngIf="crearCurso.get('titulo')?.invalid && (crearCurso.get('titulo')?.dirty || crearCurso.get('titulo')?.touched)" class="text-danger">
+        Se requiere un título.
       </div>
-      
-      <div class="mb-3">
-        <label for="descripcion" class="form-label">DESCRIPCION DEL CURSO</label>
-        <textarea   class="form-control" id="descripcion" rows="3"></textarea>
-       <!--  <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="text-danger">
-          Se requiere una descripción.
-        </div> -->
+    </div>
+    
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">DESCRIPCION DEL CURSO</label>
+      <textarea class="form-control" id="descripcion" rows="3" formControlName="descripcion"></textarea>
+      <div *ngIf="crearCurso.get('descripcion')?.invalid && (crearCurso.get('descripcion')?.dirty || crearCurso.get('descripcion')?.touched)" class="text-danger">
+        Se requiere una descripción.
       </div>
-      <button class="btn btn-primary" type="submit">Crear</button>
-    </form>
-  </div>
-  
+    </div>
+    
+    <button class="btn btn-primary" type="submit" >Crear</button>
+  </form>
+</div>

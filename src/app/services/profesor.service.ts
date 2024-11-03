@@ -20,13 +20,13 @@ export class ProfesorService {
   }
 
   createProfesor(profesor:Profesor):Observable<string>{
-    return this.http.post<string>(this.url,profesor);
+    return this.http.post<string>(this.url,profesor, { responseType: 'text' as 'json' }); 
   }
   updateProfesor(profesor:Profesor):Observable<Profesor>{
     return this.http.put<Profesor>(this.url+profesor.id,profesor);
   }
   deleteProfesor(id:number):Observable<string>{
-    return this.http.delete<string>(this.url+id);
+    return this.http.delete<string>(this.url+id, { responseType: 'text' as 'json' });
   }
 
 }

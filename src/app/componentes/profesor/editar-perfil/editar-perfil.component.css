@@ -3,13 +3,12 @@
     background: linear-gradient(135deg, #6bb6e2 0%, #f1f3f5 100%);
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start; /* Cambia esto a flex-start para que los elementos se alineen al principio */
+    min-height: calc(100vh - 80px); /* Asegúrate de que la altura mínima reste la altura del footer */
     margin: 0;
     position: relative;
     overflow: hidden;
 }
-
 .perfil-body::before {
     content: '';
     position: absolute;

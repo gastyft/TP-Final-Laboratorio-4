@@ -10,26 +10,27 @@ export class CursoService {
   constructor(private http: HttpClient) { }
 
   private cursos:Curso[]=[
-    {id: 1, title: 'Angular', descripcion: 'Curso de Angular', clases: []},
-    {id: 2, title: 'React', descripcion: 'Curso de React', clases: []},
-    {id: 3, title: 'Vue', descripcion: 'Curso de Vue', clases:[]},
+    {id: 1, titulo: 'Angular', descripcion: 'Curso de Angular', clases: []},
+    {id: 2, titulo: 'React', descripcion: 'Curso de React', clases: []},
+    {id: 3, titulo: 'Vue', descripcion: 'Curso de Vue', clases:[]},
   ]
 
-  url="http://localhost8080/curso/"
+  url="http://localhost:8080/curso/"
   getCursos(): Observable<Curso[]> {
     return this.http.get<Curso[]>(this.url);
   }
   getCursoById(id: number): Observable<Curso> {
     return this.http.get<Curso>(this.url+id);
   }
-  createCurso(curso: Curso,profesorId: number): Observable<string> {
-    return this.http.post<string>(this.url+profesorId, curso);
-  }
+  createCurso(curso: Curso, profesorId: number): Observable<any> {
+    return this.http.post(this.url + profesorId, curso, { responseType: 'text' as 'json' });
+}
+
   updateCurso(curso: Curso): Observable<string> {
-    return this.http.put<string>(this.url+curso.id, curso);
-  }
-  deleteCurso(id: number): Observable<string> {
-    return this.http.delete<string>(this.url+id);
+    return this.http.put<string>(this.url+curso.id, curso , { responseType: 'text' as 'json' });
+  } 
+  deleteCurso(id: number): Observable<any> {
+    return this.http.delete(this.url+id, { responseType: 'text' as 'json' });
   }
 
 }
