@@ -16,7 +16,7 @@
   <div class="mx-auto">
     <!-- Video de Firebase con manejo de error -->
     <video 
-      *ngIf="!videoError && video.url.includes('firebasestorage')" 
+      *ngIf="video &&!videoError && video.url.includes('firebasestorage') " 
       controls 
       [src]="video.url" 
       width="600" 
@@ -44,6 +44,6 @@
     </ng-template>
 
     <!-- Mostrar el GIF cuando hay error en cualquier elemento de video o iframe -->
-    <ng-container *ngIf="videoError" [ngTemplateOutlet]="errorTemplate"></ng-container>
+    <ng-container *ngIf="videoError || !video" [ngTemplateOutlet]="errorTemplate"></ng-container>
   </div>
 </div>
