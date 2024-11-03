@@ -26,8 +26,8 @@ export class CursoService {
     return this.http.post(this.url + profesorId, curso, { responseType: 'text' as 'json' });
 }
 
-  updateCurso(curso: Curso): Observable<string> {
-    return this.http.put<string>(this.url+curso.id, curso , { responseType: 'text' as 'json' });
+  updateCurso(curso: Curso,idCurso:number): Observable<Curso> {
+    return this.http.put<Curso>(this.url+ idCurso+`?titulo=${curso.titulo}&descripcion=${curso.descripcion}`, curso );
   } 
   deleteCurso(id: number): Observable<any> {
     return this.http.delete(this.url+id, { responseType: 'text' as 'json' });

@@ -32,7 +32,7 @@ export const routes: Routes = [
     {path:'nav-profesor', component: NavProfesorComponent,pathMatch: 'full'},
     {path:'principal-profesor/:id',component: PrincipalProfesorComponent, pathMatch: 'full'}, // principal-profesor/:id
     {path:'listar-cursos', component: ListarCursosComponent},
-    {path:'editar-curso/:id',component: EditarCursoComponent},
+    {path:'editar-curso/:id',component: EditarCursoComponent,},
     { path: '**', component: Error404Component },
         
 ];
