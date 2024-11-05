@@ -35,7 +35,7 @@ export class CrearCursoComponent implements OnInit {
     if (this.crearCurso.valid) {
         const cursoData = new Curso(this.crearCurso.value.titulo, this.crearCurso.value.descripcion);
 
-        this.cursoService.createCurso(cursoData, 1 /*this.idProfesor*/).subscribe(response => {
+        this.cursoService.createCurso(cursoData, this.idProfesor).subscribe(response => {
             console.log('Curso guardado' + response);  //Cambiar por SWAL
              swal("Curso Guardado","","success");
              this.router.navigate(['/principal-profesor',this.idProfesor]);

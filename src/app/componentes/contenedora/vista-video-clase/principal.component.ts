@@ -40,6 +40,7 @@ export class PrincipalComponent {
       this.cursoService.getCursoById(this.idCurso).subscribe(
         cursoGet => {
           this.curso = cursoGet;
+     
         },
         error => {
           swal('Error al obtener el curso', 'No se pudo cargar el curso. Por favor, intenta nuevamente.', 'error');
