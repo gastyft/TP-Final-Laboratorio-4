@@ -11,7 +11,7 @@ import swal from 'sweetalert';
 @Component({
   selector: 'app-editar-curso',
   standalone: true,
-  imports: [NavProfesorComponent,CommonModule,ReactiveFormsModule,RouterLink],
+  imports: [NavProfesorComponent,CommonModule,ReactiveFormsModule ],
   templateUrl: './editar-curso.component.html',
   styleUrl: './editar-curso.component.css'
 })

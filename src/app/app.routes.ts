@@ -28,10 +28,10 @@ export const routes: Routes = [
     //CLASE
     {path:'principal-alumno/:idAlumno/principal/:idCurso', component: PrincipalComponent}, //Se le deberia pasar el curso y ver si el idAlumno
     {path:'videoPlayer/:id', component: VideoPlayerComponent},  
-    {path:'crear-clase', component: CrearClaseComponent}, //Agregar id de curso 
+    {path:'principal-profesor/:idProfesor/:idCurso/crear-clase', component: CrearClaseComponent}, //Agregar id de curso 
     //CURSO
     {path:'lista-videos', component: ListaComponent}, //PARTE DE PRINCIPAL DE CLASES
-    {path:'principal-profesor/:idProfesor/crear-curso', component: CrearCursoComponent},
+    {path:'principal-profesor/:idProfesor/crear-curso', component: CrearCursoComponent,},
     {path:'principal-profesor/:idProfesor/editar-curso/:idCurso',component: EditarCursoComponent,},
     //COMPLEMENTOS
     {path:'footer', component: FooterComponent},
@@ -41,10 +41,10 @@ export const routes: Routes = [
     {path:'registro',component:RegistroComponent},
     //PROFESOR
     {path:'nav-profesor/:idProfesor', component: NavProfesorComponent,pathMatch: 'full'},
-    {path:'principal-profesor/:id',component: PrincipalProfesorComponent, pathMatch: 'full'}, // principal-profesor/:id
+    {path:'principal-profesor/:idProfesor',component: PrincipalProfesorComponent,  }, // principal-profesor/:id
     {path:'listar-cursos', component: ListarCursosComponent},
     //ALUMNO
-    {path:'principal-alumno/:idAlumno', component: PrincipalAlumnoComponent,pathMatch: 'full'},
+    {path:'principal-alumno/:idAlumno', component: PrincipalAlumnoComponent,},
     {path:'nav-alumno/:idAlumno', component: NavAlumnoComponent},
     {path:'listar-cursos-alumno',component: ListarCursosAlumnoComponent},
 

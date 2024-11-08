@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, HostListener  } from '@angular/core';
 import { Clase } from '../../../models/clase.model';
 import { VideoService } from '../../../services/video.service';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ClaseService } from '../../../services/clase.service';
+import { AlumnoService } from '../../../services/alumno.service';
+import { alumnoClase } from '../../../services/alumnoClase.service';
 
 declare var YT: any;
 
@@ -18,7 +20,7 @@ declare global {
 @Component({
   selector: 'app-video-player',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [  CommonModule],
   templateUrl: './video-player.component.html',
   styleUrls: ['./video-player.component.css']
 })
@@ -29,12 +31,17 @@ export class VideoPlayerComponent implements OnChanges {
   @Output() videoSeen = new EventEmitter<number>();
   player: any; 
   private isYouTubeApiLoaded = false; 
-
-  constructor(private videoService: VideoService, private sanitizer: DomSanitizer,private claseService: ClaseService) {}
+idAlumno!: number;
+  constructor(private videoService: VideoService, private sanitizer: DomSanitizer,private claseService: ClaseService,
+    private vistosService:alumnoClase, private route:ActivatedRoute,) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['videoId'] && this.videoId !== undefined) {
       this.loadVideo(this.videoId);
+    }
+    const idAlumnoParam = this.route.snapshot.paramMap.get('idAlumno');  // Obtiene el ID del alumno de la URL
+    if (idAlumnoParam) {
+      this.idAlumno = +idAlumnoParam;
     }
   }
   videoError = false;
@@ -95,8 +102,13 @@ export class VideoPlayerComponent implements OnChanges {
   onVideoEnded() {
     console.log('El video ha terminado:', this.videoId);
     this.videoSeen.emit(this.videoId); 
+    this.marcarVideoVisto(this.videoId,this.idAlumno);
   }
-
+  marcarVideoVisto(videoId: number, idAlumno: number): void {
+    this.vistosService.marcarVistoService(idAlumno, videoId).subscribe(() => { 
+    });
+    
+  }
   loadYouTubeAPI() {
     if (!this.isYouTubeApiLoaded) {
       const tag = document.createElement('script');
@@ -124,7 +136,7 @@ export class VideoPlayerComponent implements OnChanges {
   private onPlayerStateChange(event: any) {
     if (event.data === YT.PlayerState.ENDED) {
       console.log('El video de YouTube ha terminado de reproducirse.');
-      this.videoSeen.emit(this.videoId); 
+      this.onVideoEnded();
     }
   }
 }

@@ -22,8 +22,8 @@ export class ProfesorService {
   createProfesor(profesor:Profesor):Observable<string>{
     return this.http.post<string>(this.url,profesor, { responseType: 'text' as 'json' }); 
   }
-  updateProfesor(profesor:Profesor):Observable<Profesor>{
-    return this.http.put<Profesor>(this.url+ profesor.id+`?nombre=${profesor.nombre}&apellido=${profesor.apellido}&email=${profesor.email}&edad=${profesor.edad}`,profesor);
+  updateProfesor(profesor:Profesor,idProfesor:number):Observable<Profesor>{
+    return this.http.put<Profesor>(this.url+idProfesor+`?nombre=${profesor.nombre}&apellido=${profesor.apellido}&email=${profesor.email}&edad=${profesor.edad}`,profesor);
   } 
   deleteProfesor(id:number):Observable<string>{
     return this.http.delete<string>(this.url+id, { responseType: 'text' as 'json' });

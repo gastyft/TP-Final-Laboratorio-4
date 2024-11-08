@@ -12,7 +12,7 @@ import swal from 'sweetalert';
 @Component({
   selector: 'app-principal',
   standalone: true,
-  imports: [HeaderComponent, ListaComponent, VideoPlayerComponent, RouterLink, Error404Component],
+  imports: [  ListaComponent, VideoPlayerComponent,],
   templateUrl: './principal.component.html',
   styleUrl: './principal.component.css'
 })
@@ -56,5 +56,6 @@ export class PrincipalComponent {
 
   marcarVideoVisto(videoId: number) {
     this.videosVistos[videoId] = true;
+    
   }
 }
