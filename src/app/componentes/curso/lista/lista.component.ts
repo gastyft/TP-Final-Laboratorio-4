@@ -7,7 +7,7 @@ import { alumnoClase } from '../../../services/alumnoClase.service';
 @Component({
   selector: 'app-lista',
   standalone: true,
-  imports: [],
+  imports: [  CommonModule],
   templateUrl: './lista.component.html',
   styleUrls: ['./lista.component.css']
 })

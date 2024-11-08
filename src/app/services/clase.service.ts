@@ -10,7 +10,7 @@ export class ClaseService {
 
   constructor(private http:HttpClient) { }
 
-  url="http://localhost:8080/clase/"
+  url="http://localhost:8080/clase"
   getClases():Observable<Clase[]> {
     return this.http.get<Clase[]>(this.url);
   }
@@ -21,10 +21,10 @@ export class ClaseService {
     return this.http.post<string>(this.url, clase, { responseType: 'text' as 'json' });
   }
   updateClase(clase: Clase): Observable<Clase> {
-    return this.http.put<Clase>(this.url+clase.id+`?title=${clase.title}&descripcion=${clase.descripcion}&url=${clase.url}`, clase);
+    return this.http.put<Clase>(this.url+"/"+clase.id+`?title=${clase.title}&descripcion=${clase.descripcion}&url=${clase.url}`, clase);
   }
   deleteClase(id: number): Observable<string> {
-    return this.http.delete<string>(this.url+id, { responseType: 'text' as 'json' }); 
+    return this.http.delete<string>(this.url+"/"+id, { responseType: 'text' as 'json' }); 
   }
 
 }
