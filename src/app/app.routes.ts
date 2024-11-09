@@ -18,6 +18,8 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { PrincipalAlumnoComponent } from './componentes/alumno/principal-alumno/principal-alumno.component';
 import { NavAlumnoComponent } from './componentes/alumno/nav-alumno/nav-alumno.component';
 import { ListarCursosAlumnoComponent } from './componentes/alumno/listar-cursos-alumno/listar-cursos-alumno.component';
+import { ListarCursosAlumnoInscriptoComponent } from './componentes/alumno/listar-cursos-alumno-inscripto/listar-cursos-alumno-inscripto.component';
+import { EditarPerfilAlumnoComponent } from './componentes/alumno/editar-perfil-alumno/editar-perfil-alumno.component';
  
 
  
@@ -40,14 +42,16 @@ export const routes: Routes = [
     {path:'login', component: LoginComponent},
     {path:'registro',component:RegistroComponent},
     //PROFESOR
-    {path:'nav-profesor/:idProfesor', component: NavProfesorComponent,pathMatch: 'full'},
+    {path:'principal-profesor/:idProfesor', component: PrincipalAlumnoComponent,},
+    {path:'principal-profesor/:idProfesor/nav-profesor', component: NavProfesorComponent,},
     {path:'principal-profesor/:idProfesor',component: PrincipalProfesorComponent,  }, // principal-profesor/:id
-    {path:'listar-cursos', component: ListarCursosComponent},
+    {path:'principal-profesor/:idProfesor/listar-cursos', component: ListarCursosComponent},
     //ALUMNO
     {path:'principal-alumno/:idAlumno', component: PrincipalAlumnoComponent,},
-    {path:'nav-alumno/:idAlumno', component: NavAlumnoComponent},
-    {path:'listar-cursos-alumno',component: ListarCursosAlumnoComponent},
-
+    {path:'principal-alumno/:idAlumno/nav-alumno', component: NavAlumnoComponent},
+    {path:'principal-alumno/:idAlumno/listar-cursos-alumno',component: ListarCursosAlumnoComponent},
+    {path:'principal-alumno/:idAlumno/listar-cursos-alumno-inscripto', component: ListarCursosAlumnoInscriptoComponent},
+    {path:'principal-alumno/:idAlumno/editar-perfil-alumno', component: EditarPerfilAlumnoComponent},
     //ROUTING DE ERROR
     { path: '**', component: Error404Component },
         

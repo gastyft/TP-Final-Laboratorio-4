@@ -8,7 +8,7 @@ import { Curso } from '../../../models/curso.model';
 @Component({
   selector: 'app-listar-cursos-alumno',
   standalone: true,
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule],
   templateUrl: './listar-cursos-alumno.component.html',
   styleUrl: './listar-cursos-alumno.component.css'
 })

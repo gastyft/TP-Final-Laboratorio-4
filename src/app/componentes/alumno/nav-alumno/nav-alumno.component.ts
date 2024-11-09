@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-nav-alumno',
@@ -9,6 +9,11 @@ import { RouterLink } from '@angular/router';
   templateUrl: './nav-alumno.component.html',
   styleUrl: './nav-alumno.component.css'
 })
-export class NavAlumnoComponent {
-
+export class NavAlumnoComponent implements OnInit {
+  constructor(private route: ActivatedRoute){}
+idAlumno:any;
+  ngOnInit(): void {
+    this.idAlumno = this.route.snapshot.params['idAlumno'];  
+  
+  }
 }
