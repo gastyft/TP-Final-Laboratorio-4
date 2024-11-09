@@ -1,0 +1,89 @@
+.bod {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .container {
+    display: flex;
+    max-width: 1000px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+  /* Estilo del bloque izquierdo (texto) */
+  .left-section {
+    flex: 1;
+    padding-right: 50px;
+  }
+  .left-section h1 {
+    font-size: 48px;
+    color: #1877f2;
+    margin: 0;
+  }
+  .left-section p {
+    font-size: 24px;
+    color: #606770;
+  }
+  /* Estilo del formulario de login */
+  .login-form {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+  .login-form button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #1877f2;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .login-form button:hover {
+    background-color: #166fe5;
+  }
+  .login-form a {
+    display: block;
+    color: #1877f2;
+    font-size: 14px;
+    margin-top: 10px;
+    text-decoration: none;
+  }
+  .login-form a:hover {
+    text-decoration: underline;
+  }
+  .register-button {
+    margin-top: 20px;
+    display: inline-block;
+    font-size: 16px;
+    color: #ffffff !important;
+    background-color: #42b72a;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;  
+  }
+  .register-button:hover {
+    background-color: #36a420;
+  }
