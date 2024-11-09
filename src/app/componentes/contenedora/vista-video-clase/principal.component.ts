@@ -8,11 +8,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CursoService } from '../../../services/curso.service';
 import { Curso } from '../../../models/curso.model';
 import swal from 'sweetalert';
+import { NavAlumnoComponent } from "../../alumno/nav-alumno/nav-alumno.component";
 
 @Component({
   selector: 'app-principal',
   standalone: true,
-  imports: [  ListaComponent, VideoPlayerComponent,],
+  imports: [ListaComponent, VideoPlayerComponent, NavAlumnoComponent],
   templateUrl: './principal.component.html',
   styleUrl: './principal.component.css'
 })

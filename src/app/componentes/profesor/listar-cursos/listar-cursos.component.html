@@ -8,7 +8,7 @@
             Clases: {{ curso.clases.length }}
           </p>
           <button class="btn btn-4" routerLink="/principal-profesor/{{datoProfesor.id}}/editar-curso/{{curso.id}}">Editar Curso</button> <!--ES EDITAR CURSO-->
-          <button class="btn btn-4" routerLink="/editar-perfil">Crear clase</button> 
+          <button class="btn btn-4" routerLink="/principal-profesor/{{datoProfesor.id}}/crear-clase/{{curso.id}}">Crear clase</button> 
           <button type="button" class="btn btn-danger" (click)="deleteCurso(curso.id)">
             <i class="fa-solid fa-trash"></i>
           </button>

@@ -17,8 +17,8 @@ export class ClaseService {
   getClaseById(id: number): Observable<Clase> {
     return this.http.get<Clase>(this.url+"/"+id);
   }
-  createClase(clase: Clase): Observable<string> {
-    return this.http.post<string>(this.url, clase, { responseType: 'text' as 'json' });
+  createClase(clase: Clase,idCurso:number): Observable<string> {
+    return this.http.post<string>(this.url+"/"+idCurso, clase, { responseType: 'text' as 'json' });
   }
   updateClase(clase: Clase): Observable<Clase> {
     return this.http.put<Clase>(this.url+"/"+clase.id+`?title=${clase.title}&descripcion=${clase.descripcion}&url=${clase.url}`, clase);

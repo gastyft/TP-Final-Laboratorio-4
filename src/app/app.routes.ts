@@ -28,24 +28,24 @@ export const routes: Routes = [
     //ROUTING A PAGINA DEFECTO
     {path:'', component: PrincipalComponent},
     //CLASE
-    {path:'principal-alumno/:idAlumno/principal/:idCurso', component: PrincipalComponent}, //Se le deberia pasar el curso y ver si el idAlumno
+    {path:'principal-alumno/:idAlumno/principal/:idCurso', component: PrincipalComponent},  
     {path:'videoPlayer/:id', component: VideoPlayerComponent},  
-    {path:'principal-profesor/:idProfesor/:idCurso/crear-clase', component: CrearClaseComponent}, //Agregar id de curso 
+    {path:'principal-profesor/:idProfesor/crear-clase/:idCurso', component: CrearClaseComponent},  
     //CURSO
-    {path:'lista-videos', component: ListaComponent}, //PARTE DE PRINCIPAL DE CLASES
+    {path:'lista-videos', component: ListaComponent},  
     {path:'principal-profesor/:idProfesor/crear-curso', component: CrearCursoComponent,},
     {path:'principal-profesor/:idProfesor/editar-curso/:idCurso',component: EditarCursoComponent,},
     //COMPLEMENTOS
     {path:'footer', component: FooterComponent},
-    {path:'editar-perfil/:id',component:EditarPerfilComponent},
     //LOGIN Y REGISTRO
     {path:'login', component: LoginComponent},
     {path:'registro',component:RegistroComponent},
     //PROFESOR
-    {path:'principal-profesor/:idProfesor', component: PrincipalAlumnoComponent,},
+    {path:'principal-profesor/:idProfesor', component: PrincipalProfesorComponent,},
     {path:'principal-profesor/:idProfesor/nav-profesor', component: NavProfesorComponent,},
-    {path:'principal-profesor/:idProfesor',component: PrincipalProfesorComponent,  }, // principal-profesor/:id
+    {path:'principal-profesor/:idProfesor',component: PrincipalProfesorComponent,  }, 
     {path:'principal-profesor/:idProfesor/listar-cursos', component: ListarCursosComponent},
+    {path:'principal-profesor/:idProfesor/editar-perfil',component:EditarPerfilComponent},
     //ALUMNO
     {path:'principal-alumno/:idAlumno', component: PrincipalAlumnoComponent,},
     {path:'principal-alumno/:idAlumno/nav-alumno', component: NavAlumnoComponent},

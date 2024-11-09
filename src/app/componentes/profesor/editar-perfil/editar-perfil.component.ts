@@ -35,7 +35,7 @@ idProfesor!: any;
   }
 
   ngOnInit(): void {
-     this.idProfesor = this.route.snapshot.paramMap.get('id');
+     this.idProfesor = this.route.snapshot.paramMap.get('idProfesor');
     if (this.idProfesor) {
       this.profesorService.getProfesorById(+this.idProfesor).subscribe((profe) => {
         this.profesor = profe;

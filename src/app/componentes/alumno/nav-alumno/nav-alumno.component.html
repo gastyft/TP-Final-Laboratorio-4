@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" [routerLink]="['/principal-alumno', idAlumno]">CursosOnline</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,7 +10,7 @@
           <a class="nav-link active" aria-current="page" [routerLink]="['/principal-alumno', idAlumno]">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/editar-perfil-alumno',this.idAlumno]">Editar Perfil</a>
+          <a class="nav-link" [routerLink]="['/principal-alumno',this.idAlumno,'editar-perfil-alumno']">Editar Perfil</a>
         </li>
         <li>
           <a class="nav-link" [routerLink]="['/principal-alumno', this.idAlumno, 'listar-cursos-alumno-inscripto']">Mis Cursos</a>

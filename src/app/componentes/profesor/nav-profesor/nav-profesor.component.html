@@ -1,21 +1,21 @@
  
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand"  [routerLink]="['/principal-profesor',this.idProfesor]">CursosOnline</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/principal-profesor/1">Inicio</a>
+            <a class="nav-link active" aria-current="page" [routerLink]="['/principal-profesor',this.idProfesor]">Inicio</a>
           </li>  <!--ver implementacion de login-->
          
           <li class="nav-item">
-            <a class="nav-link" routerLink="/principal-profesor/1/crear-curso">Crear curso</a>
+            <a class="nav-link" [routerLink]="['/principal-profesor',this.idProfesor,'crear-curso']">Crear curso</a>
           </li>  
           <li class="nav-item">
-            <a class="nav-link" routerLink="/editar-perfil/1">Editar Perfil</a>
+            <a class="nav-link" [routerLink]="['/principal-profesor',this.idProfesor,'editar-perfil']">Editar Perfil</a>
           </li> 
         </ul>
         
