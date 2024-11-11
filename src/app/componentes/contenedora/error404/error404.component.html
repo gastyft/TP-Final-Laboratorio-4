@@ -1,10 +1,8 @@
-
 <div class="container-fluid">
-    <h1> ERROR 404</h1> 
-    <h2>HEY!! You can´t be here</h2>
-    <h4> Redirect to the main page with the following <a href="/principal">Link</a></h4> 
-    <h4>Redirijase a la pagina principal con el siguiente <a href="/principal">Link</a></h4>
+    <h1>ERROR 404</h1> 
+    <h2>HEY!! You can't be here</h2>
+    <h4>Redirect to the main page with the following <a [routerLink]="routerLink">Link</a></h4> 
+    <h4>Rediríjase a la página principal con el siguiente <a [routerLink]="routerLink">Link</a></h4>
     
-    <button type="button" class="btn btn-danger" routerLink="/principal">volver atras</button>
-                                                
-    </div>
+    <button type="button" class="btn btn-danger" [routerLink]="routerLink">Volver atrás</button>
+</div>

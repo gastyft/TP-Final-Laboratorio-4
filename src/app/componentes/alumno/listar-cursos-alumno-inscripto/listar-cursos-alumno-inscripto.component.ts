@@ -22,7 +22,7 @@ import { NavAlumnoComponent } from "../nav-alumno/nav-alumno.component";
 
   ngOnInit(): void {
     this.idAlumno = +this.route.snapshot.params['idAlumno'];
-    this.idCurso = +this.route.snapshot.params['idCurso'];
+ 
     this.getCursosInscripto(this.idAlumno);
   }
 

@@ -11,15 +11,15 @@ import { nuevoUsuario } from '../models/nuevoUsuario.model';
 })
 export class AuthService {
 
-  url = "https://carrito-gastyft.koyeb.app/";
+  url = "http://localhost:8080";
 
   constructor(private http: HttpClient, private router: Router) {}
 
   public nuevo(nuevoUsuario: nuevoUsuario): Observable<any> {
-    return this.http.post<any>(this.url + 'auth/nuevo', nuevoUsuario);
+    return this.http.post<any>(this.url + '/auth/nuevo', nuevoUsuario);
   }
 
   public login(loginusuario: loginUsuario): Observable<jwtDto> {
-    return this.http.post<jwtDto>(this.url+ 'auth/login', loginusuario);
+    return this.http.post<jwtDto>(this.url+ '/auth/login', loginusuario);
   }
 }

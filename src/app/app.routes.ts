@@ -21,18 +21,18 @@ import { ListarCursosAlumnoComponent } from './componentes/alumno/listar-cursos-
 import { ListarCursosAlumnoInscriptoComponent } from './componentes/alumno/listar-cursos-alumno-inscripto/listar-cursos-alumno-inscripto.component';
 import { EditarPerfilAlumnoComponent } from './componentes/alumno/editar-perfil-alumno/editar-perfil-alumno.component';
  
-
+import { AuthGuard } from './services/auth.guard';
  
  
 export const routes: Routes = [
     //ROUTING A PAGINA DEFECTO
     {path:'', component: PrincipalComponent},
     //CLASE
-    {path:'principal-alumno/:idAlumno/principal/:idCurso', component: PrincipalComponent},  
-    {path:'videoPlayer/:id', component: VideoPlayerComponent},  
+    {path:'principal-alumno/:idAlumno/principal/:idCurso', component: PrincipalComponent, canActivate:[AuthGuard], data:{expectedRol:['alumno']}},  
+    {path:'videoPlayer/:id', component: VideoPlayerComponent, canActivate:[AuthGuard], data:{expectedRol:['alumno']}},  
     {path:'principal-profesor/:idProfesor/crear-clase/:idCurso', component: CrearClaseComponent},  
     //CURSO
-    {path:'lista-videos', component: ListaComponent},  
+    {path:'lista-videos', component: ListaComponent, canActivate:[AuthGuard], data:{expectedRol:['alumno']}},  
     {path:'principal-profesor/:idProfesor/crear-curso', component: CrearCursoComponent,},
     {path:'principal-profesor/:idProfesor/editar-curso/:idCurso',component: EditarCursoComponent,},
     //COMPLEMENTOS
@@ -41,17 +41,17 @@ export const routes: Routes = [
     {path:'login', component: LoginComponent},
     {path:'registro',component:RegistroComponent},
     //PROFESOR
-    {path:'principal-profesor/:idProfesor', component: PrincipalProfesorComponent,},
+    {path:'principal-profesor/:idProfesor', component: PrincipalProfesorComponent,  },
     {path:'principal-profesor/:idProfesor/nav-profesor', component: NavProfesorComponent,},
     {path:'principal-profesor/:idProfesor',component: PrincipalProfesorComponent,  }, 
     {path:'principal-profesor/:idProfesor/listar-cursos', component: ListarCursosComponent},
     {path:'principal-profesor/:idProfesor/editar-perfil',component:EditarPerfilComponent},
     //ALUMNO
-    {path:'principal-alumno/:idAlumno', component: PrincipalAlumnoComponent,},
-    {path:'principal-alumno/:idAlumno/nav-alumno', component: NavAlumnoComponent},
-    {path:'principal-alumno/:idAlumno/listar-cursos-alumno',component: ListarCursosAlumnoComponent},
-    {path:'principal-alumno/:idAlumno/listar-cursos-alumno-inscripto', component: ListarCursosAlumnoInscriptoComponent},
-    {path:'principal-alumno/:idAlumno/editar-perfil-alumno', component: EditarPerfilAlumnoComponent},
+    {path:'principal-alumno/:idAlumno', component: PrincipalAlumnoComponent, canActivate:[AuthGuard], data:{expectedRol:['alumno']}},
+    {path:'principal-alumno/:idAlumno/nav-alumno', component: NavAlumnoComponent, canActivate:[AuthGuard], data:{expectedRol:['alumno']}},
+    {path:'principal-alumno/:idAlumno/listar-cursos-alumno',component: ListarCursosAlumnoComponent, canActivate:[AuthGuard], data:{expectedRol:['alumno']}},
+    {path:'principal-alumno/:idAlumno/listar-cursos-alumno-inscripto', component: ListarCursosAlumnoInscriptoComponent, canActivate:[AuthGuard], data:{expectedRol:['alumno']}},
+    {path:'principal-alumno/:idAlumno/editar-perfil-alumno', component: EditarPerfilAlumnoComponent, canActivate:[AuthGuard], data:{expectedRol:['alumno']}},
     //ROUTING DE ERROR
     { path: '**', component: Error404Component },
         

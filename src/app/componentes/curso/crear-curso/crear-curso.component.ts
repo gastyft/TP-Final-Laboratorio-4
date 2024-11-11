@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CursoService } from '../../../services/curso.service';
 import { Curso } from '../../../models/curso.model';
 import { Clase } from '../../../models/clase.model';
@@ -11,7 +11,7 @@ import swal from 'sweetalert';
 @Component({
   selector: 'app-crear-curso',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, NavProfesorComponent],
+  imports: [CommonModule, ReactiveFormsModule , NavProfesorComponent],
   providers:[HttpClientModule],
   templateUrl: './crear-curso.component.html',
   styleUrls: ['./crear-curso.component.css']
@@ -25,8 +25,8 @@ export class CrearCursoComponent implements OnInit {
 
   constructor(  private cursoService: CursoService ,private route: ActivatedRoute,private fb: FormBuilder,private router: Router) {
     this.crearCurso = this.fb.group({
-      titulo: ['Tizi', Validators.required], 
-      descripcion: ['Un curso para aprender Angular', Validators.required]  
+      titulo: ['', Validators.required], 
+      descripcion: ['', Validators.required]  
     });
  
   }
@@ -39,7 +39,11 @@ export class CrearCursoComponent implements OnInit {
             console.log('Curso guardado' + response);  //Cambiar por SWAL
              swal("Curso Guardado","","success");
              this.router.navigate(['/principal-profesor',this.idProfesor]);
-         });
+         },
+        error =>
+        {
+          swal("No se pudo guardar el curso","","success");
+    });
     }  
   }
   
