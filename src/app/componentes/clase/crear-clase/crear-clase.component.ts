@@ -57,7 +57,7 @@ export class CrearClaseComponent implements OnInit{
       }).catch((error) => {
         console.error("Error al subir el archivo:", error);
       });
-    } else if (this.linkVideo.includes("youtube.com")) {
+    } else if (this.linkVideo.includes("youtube.com")||this.linkVideo.includes("firebasestorage")) {
       this.crearClase();
     } else {
       swal("Atención", "Falta video", "warning");

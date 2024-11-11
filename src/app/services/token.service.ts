@@ -15,67 +15,53 @@ export class TokenService {
   constructor() { }
 
   public setToken(token: string): void {
-    if (typeof window !== 'undefined' && window.sessionStorage) {
-      window.sessionStorage.removeItem(TOKEN_KEY);
-      window.sessionStorage.setItem(TOKEN_KEY, token);
-    }
+    window.sessionStorage.removeItem(TOKEN_KEY);
+    window.sessionStorage.setItem(TOKEN_KEY, token);
   }
-  
+
   public getToken(): string | null {
-    if (typeof window !== 'undefined' && window.sessionStorage) {
-      return sessionStorage.getItem(TOKEN_KEY);
-    }
-    return null;
+    return sessionStorage.getItem(TOKEN_KEY);
   }
-  
+
   public setUserName(userName: string): void {
-    if (typeof window !== 'undefined' && window.sessionStorage) {
-      window.sessionStorage.removeItem(USERNAME_KEY);
-      window.sessionStorage.setItem(USERNAME_KEY, userName);
-    }
+    window.sessionStorage.removeItem(USERNAME_KEY);
+    window.sessionStorage.setItem(USERNAME_KEY, userName);
   }
-  
+
   public getUserName(): string | null {
-    if (typeof window !== 'undefined' && window.sessionStorage) {
-      return sessionStorage.getItem(USERNAME_KEY);
-    }
-    return null;
+    return sessionStorage.getItem(USERNAME_KEY);
   }
-  
+
   public setAuthorities(authorities: string[]): void {
-    if (typeof window !== 'undefined' && window.sessionStorage) {
-      window.sessionStorage.removeItem(AUTHORITIES_KEY);
-      window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
-    }
+    window.sessionStorage.removeItem(AUTHORITIES_KEY);
+    window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
   }
-  
+
   public getAuthorities(): string[] {
     this.roles = [];
-    if (typeof window !== 'undefined' && window.sessionStorage && sessionStorage.getItem(AUTHORITIES_KEY)) {
+    if (sessionStorage.getItem(AUTHORITIES_KEY)) {
       JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)!).forEach((authority: any) => {
         this.roles.push(authority.authority);
       });
     }
     return this.roles;
   }
-  
+
+ 
+
   public setIdEntidad(idEntidad: number): void {
-    if (idEntidad != null && typeof window !== 'undefined' && window.sessionStorage) {
+    if (idEntidad != null) {
       sessionStorage.setItem(ID_ENTIDAD_KEY, idEntidad.toString());
     }
   }
-  
+
+  // Obtener el ID de la entidad
   public getIdEntidad(): number | null {
-    if (typeof window !== 'undefined' && window.sessionStorage) {
-      const idEntidad = sessionStorage.getItem(ID_ENTIDAD_KEY);
-      return idEntidad ? parseInt(idEntidad) : null;
-    }
-    return null;
+    const idEntidad = sessionStorage.getItem(ID_ENTIDAD_KEY);
+    return idEntidad ? parseInt(idEntidad) : null;
   }
-  
+
   public logOut(): void {
-    if (typeof window !== 'undefined' && window.sessionStorage) {
-      window.sessionStorage.clear();
-    }
+    window.sessionStorage.clear();
   }
-}  
+}

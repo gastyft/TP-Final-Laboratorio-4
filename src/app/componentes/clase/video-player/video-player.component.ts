@@ -49,40 +49,18 @@ idAlumno!: number;
   onReconnect() {
     this.videoError = false;
   }
-  /* ORIGINAL HARDCODEADO
-  loadVideo(videoId: number) {
-    const vid = this.videoService.getVideosById(videoId);
-    if (!vid) {
-      console.error(`Video con ID ${videoId} no encontrado.`);
-    } else {
-      this.video = vid;
-
-      // Comprobar si es un video de YouTube
-      if (this.video.url.includes('youtube.com')) {
-        this.safeUrl = this.sanitizeYoutubeUrl(this.video.url);
-        this.loadYouTubeAPI();
-      this.onVideoEnded();
-      } else if (this.video.url.endsWith('.mp4')) {
-        // Es un video local o de Firebase
-        this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.video.url);
-      } else {
-        this.safeUrl = null; 
-      }
-    }
-  }
-    */
-  loadVideo(videoId: number) {
+   loadVideo(videoId: number) {
     this.claseService.getClaseById(videoId).subscribe(
       (vid) => {
         this.video = vid;
 
-        // Comprobar si es un video de YouTube
+   
         if (this.video.url.includes('youtube.com')) {
           this.safeUrl = this.sanitizeYoutubeUrl(this.video.url);
           this.loadYouTubeAPI();
           this.onVideoEnded();
         } else if (this.video.url.endsWith('.mp4')) {
-          // Es un video local o de Firebase
+          
           this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.video.url);
         } else {
           this.safeUrl = null; 

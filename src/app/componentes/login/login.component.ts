@@ -55,13 +55,13 @@ export class LoginComponent implements OnInit {
           this.tokenService.setIdEntidad(data.idEntidad);
           this.roles = this.tokenService.getAuthorities();
           
+          swal('Bienvenido ' + data.nombreUsuario,"","success");
           console.log(data.idEntidad);
           if (this.roles.includes("ROLE_PROFESOR")) {
             this.router.navigateByUrl(`/principal-profesor/${data.idEntidad}`);
           } else if (this.roles.includes("ROLE_ALUMNO") ) {
             this.router.navigateByUrl(`/principal-alumno/${data.idEntidad}`);
           }  
-          swal('Bienvenido ' + data.nombreUsuario,"","success");
         },
       err => {
     this.isLogged = false;

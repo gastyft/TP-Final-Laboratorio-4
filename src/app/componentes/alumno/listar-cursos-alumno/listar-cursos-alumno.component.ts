@@ -2,9 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { CursoService } from '../../../services/curso.service';
 import { error } from 'console';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Curso } from '../../../models/curso.model';
 import { AlumnoService } from '../../../services/alumno.service';
+import { TokenService } from '../../../services/token.service';
 
 @Component({
   selector: 'app-listar-cursos-alumno',
@@ -15,14 +16,27 @@ import { AlumnoService } from '../../../services/alumno.service';
 })
 export class ListarCursosAlumnoComponent implements OnInit {
 
-  constructor(private  cursoService :CursoService,private alumnoService:AlumnoService,private route: ActivatedRoute){}
+  constructor(private  cursoService :CursoService,private alumnoService:AlumnoService,private route: ActivatedRoute,
+    private router: Router,
+    private tokenService: TokenService,
+ 
+  ){}
 
   datosCursos:Curso[]=[];
   idAlumno!:number;
-
+  usuarioId!:number;
 ngOnInit(): void {
 
   this.idAlumno = +this.route.snapshot.params['idAlumno'];
+  this.usuarioId = this.tokenService.getIdEntidad()??0;
+
+    
+  if (this.idAlumno !== this.usuarioId) {
+   
+    this.router.navigateByUrl('/error-404');   
+  }
+
+
  this.getCursos();
   
 } 
@@ -49,7 +63,7 @@ inscribirseCurso(idCursoIns: number | undefined) {
       },
       (error) => {
         console.log("Error completo:", error);
-        if (error.status === 404) {
+        if (error.status === 409) {
           swal("Ya se encuentra inscripto", "", "error");
         } else {
           swal("Error al inscribirse al curso", "", "error");

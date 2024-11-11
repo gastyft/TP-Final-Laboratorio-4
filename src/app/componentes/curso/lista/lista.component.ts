@@ -21,10 +21,10 @@ export class ListaComponent implements OnInit {
   constructor(private vistosService: alumnoClase, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const idAlumnoParam = this.route.snapshot.paramMap.get('idAlumno');  // Obtiene el ID del alumno de la URL
+    const idAlumnoParam = this.route.snapshot.paramMap.get('idAlumno');   
     if (idAlumnoParam) {
       this.idAlumno = +idAlumnoParam;
-      this.getVistos(this.idAlumno);  // Llama a getVistos con el idAlumno
+      this.getVistos(this.idAlumno);   
     }
   }
 

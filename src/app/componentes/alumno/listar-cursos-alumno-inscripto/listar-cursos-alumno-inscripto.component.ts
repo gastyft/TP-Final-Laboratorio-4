@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CursoService } from '../../../services/curso.service';
 import { Curso } from '../../../models/curso.model';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AlumnoService } from '../../../services/alumno.service';
 import { Alumno } from '../../../models/alumno.model';
 import { NavAlumnoComponent } from "../nav-alumno/nav-alumno.component";
+import { TokenService } from '../../../services/token.service';
 
 @Component({
   selector: 'app-listar-cursos-alumno-inscripto',
@@ -17,12 +18,20 @@ import { NavAlumnoComponent } from "../nav-alumno/nav-alumno.component";
   idAlumno!: number;
   idCurso!:number;
   datosAlumno!: Alumno;
-
-  constructor(private alumnoService: AlumnoService, private route: ActivatedRoute) {}
+  usuarioId!:number;
+  constructor(private alumnoService: AlumnoService, private route: ActivatedRoute,private tokenService:TokenService,private router:Router) {}
 
   ngOnInit(): void {
     this.idAlumno = +this.route.snapshot.params['idAlumno'];
- 
+    this.usuarioId = this.tokenService.getIdEntidad()??0;
+
+    
+    if (this.idAlumno !== this.usuarioId) {
+     
+      this.router.navigateByUrl('/error-404');   
+    }
+  
+
     this.getCursosInscripto(this.idAlumno);
   }
 
