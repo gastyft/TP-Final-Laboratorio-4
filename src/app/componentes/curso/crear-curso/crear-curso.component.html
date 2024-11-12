@@ -3,7 +3,7 @@
   <form [formGroup]="crearCurso" (ngSubmit)="guardarCurso()"> <!-- Usa formGroup y ngSubmit -->
     <div class="mb-3">
       <label for="titulo" class="form-label">TITULO CURSO</label>
-      <input type="text" class="form-control" id="titulo" formControlName="titulo" placeholder="TITULO DE LA CLASE">
+      <input type="text" class="form-control" id="titulo" formControlName="titulo" placeholder="TITULO DEL CURSO">
       <div *ngIf="crearCurso.get('titulo')?.invalid && (crearCurso.get('titulo')?.dirty || crearCurso.get('titulo')?.touched)" class="text-danger">
         Se requiere un título.
       </div>
