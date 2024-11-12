@@ -9,13 +9,13 @@ export class AuthGuard implements CanActivate {
   constructor(private tokenService: TokenService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, _state: RouterStateSnapshot): boolean {
-    // Verifica si el token está presente
+ 
     if (!this.tokenService.getToken()) {
        this.router.navigate(['/login']);
-       return false;  // Redirige al login si no hay token
+       return false;   
     }
  
-    // Verifica el rol del usuario
+ 
     const expectedRol = route.data['expectedRol'];
     const roles = this.tokenService.getAuthorities();
     let realRol = '';
@@ -26,7 +26,7 @@ export class AuthGuard implements CanActivate {
     }
  
     if (expectedRol && !expectedRol.includes(realRol)) {
-       this.router.navigate(['/error404']);  // Redirige si el rol no coincide
+       this.router.navigate(['/error-404']);   
        return false;
     }
  

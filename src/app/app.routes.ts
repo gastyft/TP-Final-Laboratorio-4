@@ -30,22 +30,22 @@ export const routes: Routes = [
     //CLASE
     {path:'principal-alumno/:idAlumno/principal/:idCurso', component: PrincipalComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_ALUMNO']}},  
     {path:'videoPlayer/:id', component: VideoPlayerComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_ALUMNO']}},  
-    {path:'principal-profesor/:idProfesor/crear-clase/:idCurso', component: CrearClaseComponent},  
+    {path:'principal-profesor/:idProfesor/crear-clase/:idCurso', component: CrearClaseComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_PROFESOR']}},  
     //CURSO
     {path:'lista-videos', component: ListaComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_ALUMNO']}},  
-    {path:'principal-profesor/:idProfesor/crear-curso', component: CrearCursoComponent,},
-    {path:'principal-profesor/:idProfesor/editar-curso/:idCurso',component: EditarCursoComponent,},
+    {path:'principal-profesor/:idProfesor/crear-curso', component: CrearCursoComponent,canActivate:[AuthGuard], data:{expectedRol:['ROLE_PROFESOR']}},
+    {path:'principal-profesor/:idProfesor/editar-curso/:idCurso',component: EditarCursoComponent,canActivate:[AuthGuard], data:{expectedRol:['ROLE_PROFESOR']}},
     //COMPLEMENTOS
     {path:'footer', component: FooterComponent},
     //LOGIN Y REGISTRO
     {path:'login', component: LoginComponent},
     {path:'registro',component:RegistroComponent},
     //PROFESOR
-    {path:'principal-profesor/:idProfesor', component: PrincipalProfesorComponent,  },
-    {path:'principal-profesor/:idProfesor/nav-profesor', component: NavProfesorComponent,},
-    {path:'principal-profesor/:idProfesor',component: PrincipalProfesorComponent,  }, 
-    {path:'principal-profesor/:idProfesor/listar-cursos', component: ListarCursosComponent},
-    {path:'principal-profesor/:idProfesor/editar-perfil',component:EditarPerfilComponent},
+    {path:'principal-profesor/:idProfesor', component: PrincipalProfesorComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_PROFESOR']} },
+    {path:'principal-profesor/:idProfesor/nav-profesor', component: NavProfesorComponent,canActivate:[AuthGuard], data:{expectedRol:['ROLE_PROFESOR']}},
+    {path:'principal-profesor/:idProfesor',component: PrincipalProfesorComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_PROFESOR']} }, 
+    {path:'principal-profesor/:idProfesor/listar-cursos', component: ListarCursosComponent,canActivate:[AuthGuard], data:{expectedRol:['ROLE_PROFESOR']}},
+    {path:'principal-profesor/:idProfesor/editar-perfil',component:EditarPerfilComponent,canActivate:[AuthGuard], data:{expectedRol:['ROLE_PROFESOR']}},
     //ALUMNO
     {path:'principal-alumno/:idAlumno', component: PrincipalAlumnoComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_ALUMNO']}},
     {path:'principal-alumno/:idAlumno/nav-alumno', component: NavAlumnoComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_ALUMNO']}},
