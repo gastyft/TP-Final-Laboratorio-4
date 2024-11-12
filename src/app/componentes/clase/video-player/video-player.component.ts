@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, HostListener  } from '@angular/core';
 import { Clase } from '../../../models/clase.model';
 import { VideoService } from '../../../services/video.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ClaseService } from '../../../services/clase.service';
 import { AlumnoService } from '../../../services/alumno.service';
 import { alumnoClase } from '../../../services/alumnoClase.service';
+import { TokenService } from '../../../services/token.service';
 
 declare var YT: any;
 
@@ -32,18 +33,24 @@ export class VideoPlayerComponent implements OnChanges {
   player: any; 
   private isYouTubeApiLoaded = false; 
 idAlumno!: number;
+usuarioId!: number;
   constructor(private videoService: VideoService, private sanitizer: DomSanitizer,private claseService: ClaseService,
-    private vistosService:alumnoClase, private route:ActivatedRoute,) {}
+    private vistosService:alumnoClase, private route:ActivatedRoute,private router: Router,private tokenService: TokenService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['videoId'] && this.videoId !== undefined) {
       this.loadVideo(this.videoId);
     }
-    const idAlumnoParam = this.route.snapshot.paramMap.get('idAlumno');  // Obtiene el ID del alumno de la URL
-    if (idAlumnoParam) {
-      this.idAlumno = +idAlumnoParam;
-    }
+    this.idAlumno = +this.route.snapshot.params['idAlumno']
+    
+  this.usuarioId = this.tokenService.getIdEntidad()??0; 
+
+  if (this.idAlumno !== this.usuarioId) {
+   
+    this.router.navigateByUrl('/error-404');   
   }
+  }
+  
   videoError = false;
   @HostListener('window:online', ['$event'])
   onReconnect() {

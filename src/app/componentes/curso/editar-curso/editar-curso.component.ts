@@ -7,6 +7,7 @@ import { Curso } from '../../../models/curso.model';
 import { NavProfesorComponent } from '../../profesor/nav-profesor/nav-profesor.component';
 import { CommonModule } from '@angular/common';
 import swal from 'sweetalert';
+import { TokenService } from '../../../services/token.service';
 
 @Component({
   selector: 'app-editar-curso',
@@ -23,7 +24,10 @@ export class EditarCursoComponent implements OnInit {
   idProfesor!:number;
   idCurso: any;
   curso!:Curso;
-  constructor(  private cursoService: CursoService ,private route: ActivatedRoute,private fb: FormBuilder,private router:Router ) {
+  usuarioId!: number;
+  constructor(  private cursoService: CursoService ,private route: ActivatedRoute,private fb: FormBuilder,private router:Router,
+    private tokenService: TokenService,
+   ) {
     this.updateCurso = this.fb.group({
       titulo: ['', Validators.required],  // Inicializa como vacío
       descripcion: ['', Validators.required]  // Inicializa como vacío
@@ -31,9 +35,15 @@ export class EditarCursoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.idProfesor = this.route.snapshot.params['idProfesor']; // ID del profesor
+    this.idProfesor = +this.route.snapshot.params['idProfesor']; // ID del profesor
     this.idCurso = this.route.snapshot.params['idCurso']; // ID del curso
 
+    this.usuarioId = this.tokenService.getIdEntidad()??0; 
+
+    if (this.idProfesor !== this.usuarioId) {
+     
+      this.router.navigateByUrl('/error-404');   
+    } 
     this.cursoService.getCursoById(this.idCurso).subscribe(
       (cursoGet) => {
         this.curso = cursoGet;

@@ -16,7 +16,7 @@ idAlumno:any;
 isLogged : boolean= false;
   roles: string[]=[];
   ngOnInit(): void {
-    this.idAlumno = this.route.snapshot.params['idAlumno'];  
+    this.idAlumno = +this.route.snapshot.params['idAlumno'];  
     if (this.tokenService.getToken()) {
       this.roles = this.tokenService.getAuthorities();
       this.isLogged = true;

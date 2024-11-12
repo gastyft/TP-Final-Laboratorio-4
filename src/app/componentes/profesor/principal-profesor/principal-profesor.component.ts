@@ -21,14 +21,12 @@ export class PrincipalProfesorComponent implements OnInit  {
 
   this.idProfesor =+this.route.snapshot.params['idProfesor'];
     
-  /*  this.usuarioId = this.tokenService.getIdEntidad()??0;  IMPLEMENTAR EN TODOS LOS COMPONENTES CUANDO ESTE EL LOGIN
-  DE PROFESOR FUNCIONANDO CON CAN ACTIVATE
+   this.usuarioId = this.tokenService.getIdEntidad()??0; 
 
-    
     if (this.idProfesor !== this.usuarioId) {
      
       this.router.navigateByUrl('/error-404');   
-    } */ 
+    } 
   }
  
 

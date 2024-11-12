@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ProfesorService } from '../../../services/profesor.service';
 import { CursoService } from '../../../services/curso.service';
 import { reload } from 'firebase/auth';
+import { TokenService } from '../../../services/token.service';
 
 @Component({
   selector: 'app-listar-cursos',
@@ -15,14 +16,24 @@ import { reload } from 'firebase/auth';
 export class ListarCursosComponent implements OnInit{
   datosCursos: any[] = [];  // Almacena los cursos del profesor
    datoProfesor:any;
-  constructor(private profesorService: ProfesorService, private route: ActivatedRoute, private cursoService: CursoService) {}
+   usuarioId!: number;
+  idProfesor!: number;
+  constructor(private profesorService: ProfesorService, private route: ActivatedRoute, private cursoService: CursoService,
+    private tokenService: TokenService, private router: Router) {}
 
   ngOnInit(): void {
-    const idProfesor = this.route.snapshot.paramMap.get('idProfesor');  // Obtiene el ID del profesor de la URL
-    if (idProfesor) {
-      this.profesorService.getProfesorById(+idProfesor).subscribe((profesor) => {
+ 
+   this.idProfesor =+this.route.snapshot.params['idProfesor'];
+    this.usuarioId = this.tokenService.getIdEntidad()??0; 
+
+    if (this.idProfesor !== this.usuarioId) {
+     
+      this.router.navigateByUrl('/error-404');   
+    } 
+    if (this.idProfesor) {
+      this.profesorService.getProfesorById(this.idProfesor).subscribe((profesor) => {
         this.datoProfesor= profesor;
-        this.datosCursos = profesor.cursosQueDicta;  // Asigna los cursos a datosCursos
+        this.datosCursos = profesor.cursosQueDicta;   
         
       });
     }

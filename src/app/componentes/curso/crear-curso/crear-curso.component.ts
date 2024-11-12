@@ -8,6 +8,7 @@ import { Clase } from '../../../models/clase.model';
 import { NavProfesorComponent } from '../../profesor/nav-profesor/nav-profesor.component';
 import { HttpClientModule } from '@angular/common/http';
 import swal from 'sweetalert';
+import { TokenService } from '../../../services/token.service';
 @Component({
   selector: 'app-crear-curso',
   standalone: true,
@@ -22,8 +23,8 @@ export class CrearCursoComponent implements OnInit {
   clases: Clase[] = [];
   crearCurso: FormGroup;
   idProfesor!:number;
-
-  constructor(  private cursoService: CursoService ,private route: ActivatedRoute,private fb: FormBuilder,private router: Router) {
+usuarioId!:number;
+  constructor(  private cursoService: CursoService ,private route: ActivatedRoute,private fb: FormBuilder,private router: Router,private tokenService: TokenService) {
     this.crearCurso = this.fb.group({
       titulo: ['', Validators.required], 
       descripcion: ['', Validators.required]  
@@ -51,8 +52,13 @@ export class CrearCursoComponent implements OnInit {
 
  
   ngOnInit() {
-    this.idProfesor = this.route.snapshot.params['idProfesor']; // Obtén el idProfesor de la ruta
-    // Aquí puedes cargar las clases si es necesario, por ejemplo:
-    // this.cursoService.getClases().subscribe(clases => this.clases = clases);
+    this.idProfesor = +this.route.snapshot.params['idProfesor'];  
+    
+  this.usuarioId = this.tokenService.getIdEntidad()??0; 
+
+  if (this.idProfesor !== this.usuarioId) {
+   
+    this.router.navigateByUrl('/error-404');   
+  } 
   }
 }

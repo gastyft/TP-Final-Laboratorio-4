@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NavProfesorComponent } from '../nav-profesor/nav-profesor.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProfesorService } from '../../../services/profesor.service';
 import { Profesor } from '../../../models/profesor.model';
+import { TokenService } from '../../../services/token.service';
 
 @Component({
   selector: 'app-editar-perfil',
@@ -18,11 +19,13 @@ export class EditarPerfilComponent {
   editProfileForm: FormGroup;
   profesor!: Profesor;
 idProfesor!: any;
- 
+ usuarioId!:number;
   constructor(
     private fb: FormBuilder,
     private profesorService: ProfesorService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private tokenService: TokenService,
+    private router: Router,
   ) {
     // Inicializamos el formulario sin valores porque los datos de `profesor` aún no están disponibles
     this.editProfileForm = this.fb.group({
@@ -35,7 +38,14 @@ idProfesor!: any;
   }
 
   ngOnInit(): void {
-     this.idProfesor = this.route.snapshot.paramMap.get('idProfesor');
+     this.idProfesor = +this.route.snapshot.params['idProfesor'];
+     
+  this.usuarioId = this.tokenService.getIdEntidad()??0; 
+
+  if (this.idProfesor !== this.usuarioId) {
+   
+    this.router.navigateByUrl('/error-404');   
+  } 
     if (this.idProfesor) {
       this.profesorService.getProfesorById(+this.idProfesor).subscribe((profe) => {
         this.profesor = profe;

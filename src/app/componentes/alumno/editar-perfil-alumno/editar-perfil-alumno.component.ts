@@ -43,7 +43,7 @@ idAlumno!: number;
      this.idAlumno = + (this.route.snapshot.paramMap.get('idAlumno')?? 0);
   
       this.usuarioId = this.tokenService.getIdEntidad() || 0;
-      console.log('idAlumno:', this.idAlumno, 'usuarioId:', this.usuarioId);
+  
     
       if (this.idAlumno !== this.usuarioId) {
         this.router.navigateByUrl('/error-404');

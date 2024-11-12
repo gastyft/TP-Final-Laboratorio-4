@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { EventEmitter } from 'stream';
 import { TokenService } from '../../../services/token.service';
 
@@ -13,18 +13,25 @@ import { TokenService } from '../../../services/token.service';
 })
 export class NavProfesorComponent implements OnInit{
  
-  constructor(private route:ActivatedRoute,private tokenService: TokenService){}
-  idProfesor: string | null = null;
+  constructor(private route:ActivatedRoute,private tokenService: TokenService,private router: Router){}
+  idProfesor!: number;
   isLogged : boolean= false;
   roles: string[]=[];
+  usuarioId!:number;
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.idProfesor = params.get('idProfesor');
-    });
+
+    this.idProfesor =+this.route.snapshot.params['idProfesor'];
     if (this.tokenService.getToken()) {
       this.roles = this.tokenService.getAuthorities();
       this.isLogged = true;
   }
+  
+  this.usuarioId = this.tokenService.getIdEntidad()??0; 
+
+  if (this.idProfesor !== this.usuarioId) {
+   
+    this.router.navigateByUrl('/error-404');   
+  } 
 }
 
 onLogOut(): void {

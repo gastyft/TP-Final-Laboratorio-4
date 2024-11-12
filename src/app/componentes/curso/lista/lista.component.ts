@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Curso } from '../../../models/curso.model';
 import { alumnoClase } from '../../../services/alumnoClase.service';
+import { TokenService } from '../../../services/token.service';
 
 @Component({
   selector: 'app-lista',
@@ -17,13 +18,19 @@ export class ListaComponent implements OnInit {
   @Input() curso!: Curso;
 
   idAlumno!: number;
-
-  constructor(private vistosService: alumnoClase, private route: ActivatedRoute) {}
+  usuarioId!:number;
+  constructor(private vistosService: alumnoClase, private route: ActivatedRoute,private tokenService: TokenService,private router: Router) {}
 
   ngOnInit(): void {
-    const idAlumnoParam = this.route.snapshot.paramMap.get('idAlumno');   
-    if (idAlumnoParam) {
-      this.idAlumno = +idAlumnoParam;
+   this.idAlumno = +this.route.snapshot.params['idAlumno'];   
+    
+  this.usuarioId = this.tokenService.getIdEntidad()??0; 
+
+  if (this.idAlumno !== this.usuarioId) {
+   
+    this.router.navigateByUrl('/error-404');   
+  } 
+    if (this.idAlumno) {
       this.getVistos(this.idAlumno);   
     }
   }
