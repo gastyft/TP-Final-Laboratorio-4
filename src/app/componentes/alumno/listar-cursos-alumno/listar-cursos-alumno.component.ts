@@ -57,15 +57,14 @@ inscribirseCurso(idCursoIns: number | undefined) {
     return;
   } else {
     this.alumnoService.inscribirAlumnoACurso(this.idAlumno, idCursoIns).subscribe(
-      (data) => {
-        console.log(data);
+      data => {
+     
         swal("Se inscribió al curso correctamente", "", "success");
       },
-      (error) => {
-        console.log("Error completo:", error);
+      error => {
         if (error.status === 409) {
           swal("Ya se encuentra inscripto", "", "error");
-        } else {
+        } else if(error.status === 400){
           swal("Error al inscribirse al curso", "", "error");
         }
       }

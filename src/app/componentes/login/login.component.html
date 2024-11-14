@@ -1,12 +1,12 @@
  <div class="bod">
     <div class="container">
-        <!-- Sección de texto -->
+      
         <div class="left-section">
           <h1>CursosOnline UTN</h1>
         <p>CursosOnline te ayuda a preparte e insertarte en el mercado laboral moderno.</p>
         </div>
         
-        <!-- Sección del formulario de login -->
+      
         <div class="login-form">
           <form >
             <input type="text" placeholder="Nombre de usuario" name="nombreUsuario" [(ngModel)]="nombreUsuario" required>
@@ -14,7 +14,7 @@
             <button type="button" (click)="onLogin()" >Iniciar sesión</button>
           
           </form>
-          <a  class="register-button" [routerLink]="['/registro']" >Crear cuenta nueva</a>
+          <a  class="register-button" routerLink="/registro" >Crear cuenta nueva</a>
         </div>
       </div></div>
  
