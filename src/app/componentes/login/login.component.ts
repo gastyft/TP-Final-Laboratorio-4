@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   
   
     ngOnInit(): void {
-  
+  this.scrollToTop();
       if(this.tokenService.getToken()){
         this.isLogged=true;
         this.isLoginFail=false;
@@ -73,5 +73,18 @@ export class LoginComponent implements OnInit {
     swal("" + this.errMsj, "", "error");
   }
       );
+    }
+
+
+
+    private isBrowser(): boolean {
+      return typeof window !== 'undefined';
+    }
+    scrollToTop(): void {
+      if(this.isBrowser())
+      scrollTo({
+        top: 0,
+        behavior: 'smooth' // Desplazamiento suave
+      });
     }
   }

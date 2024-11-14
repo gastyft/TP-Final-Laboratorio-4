@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Profesor } from '../../models/profesor.model';
 import { Alumno } from '../../models/alumno.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { nuevoUsuario } from '../../models/nuevoUsuario.model';
@@ -11,7 +11,7 @@ import { nuevoUsuario } from '../../models/nuevoUsuario.model';
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule,ReactiveFormsModule,RouterLink],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })
@@ -56,6 +56,7 @@ export class RegistroComponent {
 
   ngOnInit(): void {
       swal("Cree su perfil de alumno o profesor segun fue designado");
+      this.scrollToTop();
   }
 
 
@@ -89,5 +90,16 @@ export class RegistroComponent {
       }
     );
   }
+}
+
+private isBrowser(): boolean {
+  return typeof window !== 'undefined'; //Sin querer lo configuramos con SSR y asi podemos usar el objeto window
+}
+scrollToTop(): void {
+  if(this.isBrowser())
+  scrollTo({
+    top: 0,
+    behavior: 'smooth' // Desplazamiento suave
+  });
 }
 }
