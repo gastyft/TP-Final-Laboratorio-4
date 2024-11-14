@@ -29,17 +29,17 @@ idAlumno!: number;
     private tokenService: TokenService,
     private router: Router,
   ) {
-    // Inicializamos el formulario sin valores porque los datos de `profesor` aún no están disponibles
+
     this.editProfileForm = this.fb.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      email: ['', [Validators.required, ]], //Validators.email rompe el codigo
+      email: ['', [Validators.required,Validators.email ]], 
 
       
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { //Se captura el id del path y se valida que no se haya cambiado y sea el mismo que el de la session 
      this.idAlumno = + (this.route.snapshot.paramMap.get('idAlumno')?? 0);
   
       this.usuarioId = this.tokenService.getIdEntidad() || 0;

@@ -37,8 +37,8 @@ export class RegistroComponent {
       edad: ['', [Validators.required, Validators.min(18)], []],
       nombreUsuario:['',Validators.required],
       email: ['', [Validators.required, Validators.email]], 
-      password: ['', Validators.required],  // Sin validador asincrónico
-  passwordConfirm: ['', [Validators.required, this.passwordMatchValidator]]  // Usar validador síncrono
+      password: ['', Validators.required], 
+  passwordConfirm: ['', [Validators.required, this.passwordMatchValidator]]  
 }, { validator: this.passwordMatchValidator });
   }
 

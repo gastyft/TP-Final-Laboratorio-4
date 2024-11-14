@@ -36,6 +36,7 @@ export class CrearClaseComponent implements OnInit{
 
     if(this.idCurso){
      this.contarCantidadClases();
+     
     }
   }
 

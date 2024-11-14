@@ -1,17 +1,22 @@
 #sidebar-wrapper {
-    width: 250px; /* Fija el ancho del sidebar */
+    width: 250px;  
   }
   
   #page-content-wrapper {
-    margin-left: 250px; /* El contenido principal comienza después del sidebar */
+    margin-left: 250px; 
   }
   
   .accordion-button {
-    white-space: nowrap; /* Evita que el texto del botón se divida en varias líneas */
+    white-space: nowrap; 
   }
   
   .accordion-body {
-    overflow-y: auto; /* Si el contenido del accordion es muy largo, aparecerá un scroll */
-    max-height: 200px; /* Limita la altura del contenido del acordeón */
+    overflow-y: auto;  
+    max-height: 200px;  
   }
+
+  .scrollable-list {
+    max-height: 90vh;  
+    overflow-y: auto;
+}
   
