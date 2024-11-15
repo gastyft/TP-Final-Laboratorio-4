@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
 import { ListaComponent } from '../../curso/lista/lista.component';
 import { VideoPlayerComponent } from '../../clase/video-player/video-player.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { Error404Component } from "../error404/error404.component";
 import { DomSanitizer } from '@angular/platform-browser';
 import { CursoService } from '../../../services/curso.service';
 import { Curso } from '../../../models/curso.model';
