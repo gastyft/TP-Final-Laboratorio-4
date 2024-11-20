@@ -22,6 +22,7 @@ import { ListarCursosAlumnoInscriptoComponent } from './componentes/alumno/lista
 import { EditarPerfilAlumnoComponent } from './componentes/alumno/editar-perfil-alumno/editar-perfil-alumno.component';
  
 import { AuthGuard } from './services/auth.guard';
+import { MisCertificadosComponent } from './componentes/alumno/mis-certificados/mis-certificados.component';
  
  
 export const routes: Routes = [
@@ -52,6 +53,7 @@ export const routes: Routes = [
     {path:'principal-alumno/:idAlumno/listar-cursos-alumno',component: ListarCursosAlumnoComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_ALUMNO']}},
     {path:'principal-alumno/:idAlumno/listar-cursos-alumno-inscripto', component: ListarCursosAlumnoInscriptoComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_ALUMNO']}},
     {path:'principal-alumno/:idAlumno/editar-perfil-alumno', component: EditarPerfilAlumnoComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_ALUMNO']}},
+    {path: 'principal-alumno/:idAlumno/mis-certificados', component:MisCertificadosComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_ALUMNO']}},
     //ROUTING DE ERROR
     { path: '**', component: Error404Component },
         
