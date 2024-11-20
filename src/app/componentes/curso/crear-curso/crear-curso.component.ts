@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CursoService } from '../../../services/curso.service';
 import { Curso } from '../../../models/curso.model';
@@ -23,11 +23,11 @@ export class CrearCursoComponent implements OnInit {
   clases: Clase[] = [];
   crearCurso: FormGroup;
   idProfesor!:number;
-usuarioId!:number;
+ usuarioId!:number;
   constructor(  private cursoService: CursoService ,private route: ActivatedRoute,private fb: FormBuilder,private router: Router,private tokenService: TokenService) {
     this.crearCurso = this.fb.group({
       titulo: ['', Validators.required], 
-      descripcion: ['', Validators.required]  
+      descripcion: ['', [ Validators.required, Validators.minLength(15)]]  
     });
  
   }

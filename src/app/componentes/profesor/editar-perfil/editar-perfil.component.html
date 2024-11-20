@@ -39,7 +39,7 @@
           La contraseña es obligatoria.
         </div> 
       </div>-->
-      <button type="submit" class="btn">Guardar Cambios</button>
+      <button type="submit" class="btn" [disabled]= "!editProfileForm.valid" >Guardar Cambios</button>
     </form>
   </div>
 </div>

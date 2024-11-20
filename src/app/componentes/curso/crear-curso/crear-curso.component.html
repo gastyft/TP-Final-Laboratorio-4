@@ -12,11 +12,20 @@
     <div class="mb-3">
       <label for="descripcion" class="form-label">DESCRIPCION DEL CURSO</label>
       <textarea class="form-control" id="descripcion" rows="3" formControlName="descripcion"></textarea>
-      <div *ngIf="crearCurso.get('descripcion')?.invalid && (crearCurso.get('descripcion')?.dirty || crearCurso.get('descripcion')?.touched)" class="text-danger">
-        Se requiere una descripción.
+      <div *ngIf="(crearCurso.get('descripcion')?.dirty || crearCurso.get('descripcion')?.touched)" class="text-danger">
+        
+        <div *ngIf="crearCurso.get('descripcion')?.errors?.['required']" >
+          Se requiere una descripción.
+        </div>
+
+        <div *ngIf="crearCurso.get('descripcion')?.errors?.['minlength']" >
+          Se requiere un mínimo de 15 caracteres.
+        </div>
+
       </div>
+      
     </div>
     
-    <button class="btn btn-primary" type="submit" >Crear</button>
+    <button class="btn btn-primary" type="submit" [disabled]= "!crearCurso.valid" >Crear</button>
   </form>
 </div>

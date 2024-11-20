@@ -31,7 +31,7 @@ idProfesor!: any;
     this.editProfileForm = this.fb.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      email: ['', [Validators.required, ]], //Validators.email rompe el codigo
+      email: ['', [Validators.required,Validators.email ]], //Validators.email rompe el codigo
 
       
     });
@@ -84,6 +84,7 @@ idProfesor!: any;
       console.log('Formulario no válido');
     }
   }
+
   
 
 }
