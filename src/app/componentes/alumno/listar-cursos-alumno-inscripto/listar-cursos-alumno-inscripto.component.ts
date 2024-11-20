@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CursoService } from '../../../services/curso.service';
-import { Curso } from '../../../models/curso.model';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AlumnoService } from '../../../services/alumno.service';
@@ -80,34 +78,9 @@ import { PdfCertificateService } from '../../../services/pdf-certificate.service
     return clasesVistasDelCurso.length === curso.clases.length;
   }
 
-
+finalizarCurso(){
   
-  generarCertificado(nombreCurso: string) {
-    const alumno = Alumno;
-    this.alumnoService.getAlumnoById(this.idAlumno).subscribe(data => {
-  
-      this.pdfService.getCertificate(data.nombre + " " + data.apellido, nombreCurso).subscribe(
-        (pdfArrayBuffer: ArrayBuffer) => {
-          // Convierte el ArrayBuffer a un Blob de tipo 'application/pdf'
-          const pdfBlob = new Blob([pdfArrayBuffer], { type: 'application/pdf' });
-  
-          // Verifica que sea un archivo PDF
-          if (pdfBlob.type === 'application/pdf') {
-            const pdfUrl = URL.createObjectURL(pdfBlob);
-            window.open(pdfUrl);  // Abre el PDF en una nueva ventana
-          } else {
-            console.error('El tipo de archivo recibido no es un PDF, es de tipo:', pdfBlob.type);
-          }
-        },
-        (error) => {
-          console.error('Error al obtener el PDF', error);
-        }
-      );
-    },
-    error => {
-      console.error('Error al obtener los datos del alumno', error);
-    });
-  }
+}
   
 
 

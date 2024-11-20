@@ -15,6 +15,9 @@
         <li>
           <a class="nav-link" [routerLink]="['/principal-alumno', this.idAlumno, 'listar-cursos-alumno-inscripto']">Mis Cursos</a>
         </li>
+        <li>
+          <a class="nav-link" [routerLink]="['/principal-alumno', this.idAlumno, 'mis-certificados']">Mis Certificados</a>
+        </li>
       </ul>
       <div class="d-flex ms-auto">
         <button class="btn btn-outline-dark" *ngIf="isLogged"  (click)="onLogOut()">Logout</button>

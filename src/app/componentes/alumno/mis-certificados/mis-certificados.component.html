@@ -1,16 +1,16 @@
 <app-nav-alumno></app-nav-alumno>
 <div class="container">
     <div class="cards">
-      <div class="card" *ngFor="let curso of datosAlumno?.cursosInscritos">
+      <div class="card" *ngFor="let curso of certificados?.cursosInscritos">
         <div class="card-body">
           <h5 class="card-title">{{ curso.titulo || 'Sin título' }}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{ curso.descripcion || 'Sin descripción' }}</h6>
           <p class="card-text">
             Clases: {{ curso.clases.length }}
           </p>
-          <button class="btn btn-4" [routerLink]="['/principal-alumno',this.idAlumno,'principal',curso.id]" routerLinkActive="router-link-active" >Ver Clases</button> 
-         <!-- <button class="btn btn-4"   *ngIf="verificacionCompletada && cursosCompletados[curso.id!]" (click)="generarCertificado(curso.titulo)" >Descargar certificado</button> 
-      -->
+       
+          <button class="btn btn-4" (click)="generarCertificado(curso.titulo)" >Descargar certificado</button> 
+      
         </div>
       </div>
     </div>

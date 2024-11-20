@@ -15,7 +15,7 @@ constructor(private http:HttpClient) {
 }
 
  marcarVistoService(idAlumno:number,idClase:number): Observable<string>{
-  return this.http.post<string>(this.url+idAlumno+"/marcar-visto/"+idClase, { responseType: 'text' as 'json' });
+  return this.http.post<string>(this.url+idAlumno+"/marcar-visto/"+idClase,null, { responseType: 'text' as 'json' });
  }
 
  traerClasesVistas(idAlumno:number): Observable<Clase[]> {
