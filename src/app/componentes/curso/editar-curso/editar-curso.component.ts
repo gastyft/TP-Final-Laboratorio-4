@@ -30,7 +30,7 @@ export class EditarCursoComponent implements OnInit {
    ) {
     this.updateCurso = this.fb.group({
       titulo: ['', Validators.required],  // Inicializa como vacío
-      descripcion: ['', Validators.required]  // Inicializa como vacío
+      descripcion: ['', Validators.required,Validators.minLength(15)]  // Inicializa como vacío
     });
   }
 

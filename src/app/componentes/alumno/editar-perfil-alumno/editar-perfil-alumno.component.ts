@@ -35,7 +35,6 @@ idAlumno!: number;
       apellido: ['', Validators.required],
       email: ['', [Validators.required,Validators.email ]], 
 
-      
     });
   }
 

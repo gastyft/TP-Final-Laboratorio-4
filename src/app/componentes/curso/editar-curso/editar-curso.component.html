@@ -4,19 +4,28 @@
     <div class="mb-3">
       <label for="titulo" class="form-label">TITULO CURSO</label>
       <input type="text" class="form-control" id="titulo" formControlName="titulo" placeholder="TITULO DE LA CLASE">
-      <div  class="alert alert-danger" role="alert"  *ngIf="updateCurso.get('titulo')?.invalid && (updateCurso.get('titulo')?.dirty || updateCurso.get('titulo')?.touched)" class="text-danger">
+      <div class="alert alert-danger" role="alert"
+        *ngIf="updateCurso.get('titulo')?.invalid && (updateCurso.get('titulo')?.dirty || updateCurso.get('titulo')?.touched)"
+        class="text-danger">
         Se requiere un título.
       </div>
     </div>
-    
+
     <div class="mb-3">
       <label for="descripcion" class="form-label">DESCRIPCION DEL CURSO</label>
       <textarea class="form-control" id="descripcion" rows="3" formControlName="descripcion"></textarea>
-      <div  class="alert alert-danger" role="alert"  *ngIf="updateCurso.get('descripcion')?.invalid && (updateCurso.get('descripcion')?.dirty || updateCurso.get('descripcion')?.touched)" class="text-danger">
-        Se requiere una descripción.
+      <div *ngIf="(updateCurso.get('descripcion')?.dirty || updateCurso.get('descripcion')?.touched)"
+        class="text-danger">
+        <div *ngIf="updateCurso.get('descripcion')?.errors?.['required']">
+          Se requiere una descripción.
+        </div>
+
+        <div *ngIf="updateCurso.get('descripcion')?.errors?.['minlength']">
+          Se requiere un mínimo de 15 caracteres.
+        </div>
       </div>
-    </div>
-    
-    <button class="btn btn-primary" type="submit" >Modificar</button>
+
+      <button class="btn btn-primary" [disabled]= "!updateCurso.valid" type="submit">Modificar</button>
+      </div>
   </form>
 </div>
