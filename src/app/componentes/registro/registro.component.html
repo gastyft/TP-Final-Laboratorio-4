@@ -25,6 +25,9 @@
         <div class="alert alert-danger" role="alert" *ngIf="createProfileForm.get('nombre')?.errors?.['required'] && createProfileForm.get('nombre')?.touched">
           El nombre es obligatorio.
         </div>
+        <div class="alert alert-danger" role="alert" *ngIf="createProfileForm.get('nombre')?.errors?.['pattern'] && createProfileForm.get('apellido')?.touched">
+          El nombre no puede contener números ni caracteres especiales.
+        </div>
       </div>
       
       <div class="form-group">
@@ -34,7 +37,7 @@
           El apellido es obligatorio.
         </div>
         <div class="alert alert-danger" role="alert" *ngIf="createProfileForm.get('apellido')?.errors?.['pattern'] && createProfileForm.get('apellido')?.touched">
-          El apellido no puede contener números.
+          El apellido no puede contener números ni caracteres especiales.
         </div>
       </div>
 
