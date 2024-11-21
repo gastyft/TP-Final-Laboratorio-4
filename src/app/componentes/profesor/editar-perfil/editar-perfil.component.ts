@@ -29,8 +29,8 @@ idProfesor!: any;
   ) {
     // Inicializamos el formulario sin valores porque los datos de `profesor` aún no están disponibles
     this.editProfileForm = this.fb.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
+      nombre: ['',[ Validators.required, Validators.pattern('[a-zA-Z]') ]],
+      apellido: ['',[ Validators.required, Validators.pattern('[a-zA-Z]') ]],
       email: ['', [Validators.required,Validators.email ]], //Validators.email rompe el codigo
 
       

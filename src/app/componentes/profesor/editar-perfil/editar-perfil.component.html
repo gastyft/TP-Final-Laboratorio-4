@@ -13,12 +13,18 @@
         <div class="alert alert-danger" role="alert" *ngIf="editProfileForm.get('nombre')?.errors?.['required'] && editProfileForm.get('nombre')?.touched">
           El nombre es obligatorio.
         </div>
+        <div class="alert alert-danger" role="alert" *ngIf="editProfileForm.get('nombre')?.errors?.['pattern'] && editProfileForm.get('nombre')?.touched">
+          El nombre no puede contener números ni caracteres especiales.
+        </div>
       </div>
       <div class="form-group">
         <label for="apellido">Apellido:</label>
         <input type="text" id="apellido" formControlName="apellido" class="form-control">
         <div class="alert alert-danger" role="alert" *ngIf="editProfileForm.get('apellido')?.errors?.['required'] && editProfileForm.get('apellido')?.touched">
           El apellido es obligatorio.
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="editProfileForm.get('apellido')?.errors?.['pattern'] && editProfileForm.get('apellido')?.touched">
+          El apellido no puede contener números ni caracteres especiales.
         </div>
       </div>
       
