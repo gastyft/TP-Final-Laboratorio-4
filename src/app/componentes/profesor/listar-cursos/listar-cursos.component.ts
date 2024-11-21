@@ -46,7 +46,7 @@ export class ListarCursosComponent implements OnInit{
        this.ngOnInit();
       },
       (error) => {
-        swal("Error al eliminar el curso", "", "error");
+        swal("Error al eliminar el curso", "Posee alumnos inscriptos", "error");
       }
     );
   }
