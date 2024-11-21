@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Profesor } from '../../models/profesor.model';
 import { Alumno } from '../../models/alumno.model';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -31,10 +31,10 @@ export class RegistroComponent {
  
   ) {
     this.createProfileForm = this.fb.group({
-      userType: ['', Validators.required,],
-      nombre: ['', [Validators.required,Validators.pattern('[a-zA-Z]'),]],
-      apellido: ['', [Validators.required,Validators.pattern('[a-zA-Z]')]],
-      edad: ['', [Validators.required, Validators.min(18)], []],
+      userType: ['', Validators.required],
+      nombre: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ\\s]+$')]],
+      apellido: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ\\s]+$')]],
+      edad: ['', [Validators.required, Validators.min(18)], ],
       nombreUsuario:['',Validators.required],
       email: ['', [Validators.required, Validators.email]], 
       password: ['', Validators.required], 
@@ -42,7 +42,7 @@ export class RegistroComponent {
 }, { validator: this.passwordMatchValidator });
   }
 
-
+ 
   passwordMatchValidator(form: AbstractControl): ValidationErrors | null {
     const password = form.get('password')?.value;
     const passwordConfirm = form.get('passwordConfirm')?.value;

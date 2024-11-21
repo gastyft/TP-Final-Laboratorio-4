@@ -31,8 +31,8 @@ idAlumno!: number;
   ) {
 
     this.editProfileForm = this.fb.group({
-      nombre: ['',[ Validators.required,Validators.pattern('[a-zA-Z]') ]],
-      apellido: ['',[ Validators.required,Validators.pattern('[a-zA-Z]')]],
+      nombre: ['',[ Validators.required,  Validators.pattern('^[a-zA-ZÀ-ÿ\\s]+$') ]],
+      apellido: ['',[ Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ\\s]+$')]],
       email: ['', [Validators.required,Validators.email ]], 
 
     });

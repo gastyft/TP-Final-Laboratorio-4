@@ -13,7 +13,8 @@
         <div class="alert alert-danger" role="alert" *ngIf="editProfileForm.get('nombre')?.errors?.['required'] && editProfileForm.get('nombre')?.touched">
           El nombre es obligatorio.
         </div>
-        <div class="alert alert-danger" role="alert" *ngIf="editProfileForm.get('nombre')?.errors?.['pattern'] && editProfileForm.get('nombre')?.touched">
+        <div class="alert alert-danger" role="alert"
+          *ngIf="editProfileForm.get('nombre')?.errors?.['pattern'] && editProfileForm.get('nombre')?.touched">
           El nombre no puede contener números ni caracteres especiales.
         </div>
       </div>
@@ -23,7 +24,8 @@
         <div class="alert alert-danger" role="alert" *ngIf="editProfileForm.get('apellido')?.errors?.['required'] && editProfileForm.get('apellido')?.touched">
           El apellido es obligatorio.
         </div>
-        <div class="alert alert-danger" role="alert" *ngIf="editProfileForm.get('apellido')?.errors?.['pattern'] && editProfileForm.get('apellido')?.touched">
+        <div class="alert alert-danger" role="alert"
+          *ngIf="editProfileForm.get('apellido')?.errors?.['pattern'] && editProfileForm.get('apellido')?.touched">
           El apellido no puede contener números ni caracteres especiales.
         </div>
       </div>
