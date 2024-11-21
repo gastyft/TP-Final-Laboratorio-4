@@ -34,7 +34,7 @@ export class RegistroComponent {
       userType: ['', Validators.required],
       nombre: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ\\s]+$')]],
       apellido: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ\\s]+$')]],
-      edad: ['', [Validators.required, Validators.min(18)], ],
+      edad: ['', [Validators.required, Validators.min(18),Validators.max(100)], ],
       nombreUsuario:['',Validators.required],
       email: ['', [Validators.required, Validators.email]], 
       password: ['', Validators.required], 
