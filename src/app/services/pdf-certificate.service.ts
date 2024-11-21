@@ -17,9 +17,9 @@ export class PdfCertificateService {
     const fechaFormateada = fecha.toISOString().split('T')[0];  
 
     const fechaFinal = fechaFormateada.trim(); 
-
+//El encodeURIComponent toma caracteres especiales y lo pasa a codigo ascii para que no se rompa
     return this.http.get<ArrayBuffer>(`${this.url}?nombreAlumno=${encodeURIComponent(nombreAlumno)}&nombreCurso=${encodeURIComponent(nombreCurso)}&fechaFinalizacion=${fechaFinal}`, {
-      responseType: 'arraybuffer' as 'json'  // Cambia aquí a 'arraybuffer'
+      responseType: 'arraybuffer' as 'json'   
     });
 }
 
