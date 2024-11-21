@@ -66,12 +66,16 @@ export class CrearClaseComponent implements OnInit{
   }
 
   private crearClase() {
+  
+    if (!this.titulo.trim() || !this.descripcion.trim()) {
+      swal("Atención", "Todos los campos son obligatorios", "warning");
+      return;
+    }
     const clase: Clase = {
       title: this.titulo,
       descripcion: this.descripcion,
       url: this.linkVideo
     };
-
     if (clase.url.includes("youtube.com") || clase.url.includes("firebasestorage")) {
       this.claseService.createClase(clase, this.idCurso).subscribe(
         data => {

@@ -78,9 +78,6 @@ import { PdfCertificateService } from '../../../services/pdf-certificate.service
     return clasesVistasDelCurso.length === curso.clases.length;
   }
 
-finalizarCurso(){
-  
-}
   
 
 

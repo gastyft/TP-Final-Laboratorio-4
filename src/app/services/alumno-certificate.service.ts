@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Curso } from '../models/curso.model';
 import { Observable } from 'rxjs';
 import { json } from 'stream/consumers';
+import { AlumnoCertificate } from '../models/alumnoCertificate.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,11 @@ export class AlumnoCertificateService {
      }
 
      finalizarCurso(idAlumno:number, idCurso:number): Observable<string> {
-      return this.http.post<string>(this.url+"/"+idAlumno+"/"+idCurso,  { responseType: 'text' as 'json' } );
+      return this.http.post<string>(this.url+"/"+idAlumno+"/"+idCurso,null,  { responseType: 'text' as 'json' } );
      }
+
+     getCursosFinalizadosByAlumnoAndCurso(idAlumno:number,idCurso : number): Observable<AlumnoCertificate> {
+      return this.http.get<AlumnoCertificate>(this.url+"/"+idAlumno+"/"+idCurso);
+       }
 
 }
