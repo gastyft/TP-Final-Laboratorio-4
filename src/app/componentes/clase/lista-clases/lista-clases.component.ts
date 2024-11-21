@@ -44,7 +44,5 @@ this.cursoService.getCursoById(this.idCurso).subscribe(c =>{
 },
  err  => {
 });
-
-}
-
+} 
 }
