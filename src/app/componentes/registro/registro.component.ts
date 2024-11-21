@@ -31,9 +31,9 @@ export class RegistroComponent {
  
   ) {
     this.createProfileForm = this.fb.group({
-      userType: ['', Validators.required],
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
+      userType: ['', Validators.required,],
+      nombre: ['', [Validators.required,Validators.pattern('[a-zA-Z]'),]],
+      apellido: ['', [Validators.required,Validators.pattern('[a-zA-Z]')]],
       edad: ['', [Validators.required, Validators.min(18)], []],
       nombreUsuario:['',Validators.required],
       email: ['', [Validators.required, Validators.email]], 

@@ -79,7 +79,7 @@ export class CrearClaseComponent implements OnInit{
     if (clase.url.includes("youtube.com") || clase.url.includes("firebasestorage")) {
       this.claseService.createClase(clase, this.idCurso).subscribe(
         data => {
-          swal("Good job!", "Clase creada", "success");
+          swal("¡Que bien!", "Clase creada", "success");
           this.resetForm();
           this.contarCantidadClases();
         },
