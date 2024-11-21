@@ -1,25 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { StorageService } from '../../../services/firebase-storage.service';
- 
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Clase } from '../../../models/clase.model';
-import swal from 'sweetalert';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 import { ClaseService } from '../../../services/clase.service';
+import { StorageService } from '../../../services/firebase-storage.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CursoService } from '../../../services/curso.service';
+import { throws } from 'assert';
 import { Curso } from '../../../models/curso.model';
+import { Clase } from '../../../models/clase.model';
 import { NavProfesorComponent } from "../../profesor/nav-profesor/nav-profesor.component";
-
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-crear-clase',
-  standalone:true,
-  imports: [CommonModule, FormsModule, NavProfesorComponent],
-  templateUrl: './crear-clase.component.html',
-  styleUrls: ['./crear-clase.component.css'],
+  selector: 'app-editar-clase',
+  standalone: true,
+  imports: [NavProfesorComponent,FormsModule],
+  templateUrl: './editar-clase.component.html',
+  styleUrl: './editar-clase.component.css'
 })
-export class CrearClaseComponent implements OnInit{
+export class EditarClaseComponent {
   titulo: string = '';
   descripcion: string = '';
   linkVideo: string = '';
@@ -28,18 +25,28 @@ export class CrearClaseComponent implements OnInit{
   curso!:Curso;
   idCurso!:number;
   cant!: number;
+  claseId!:number;
+  idProfesor!: number;
   constructor(private claseService: ClaseService, private storageService: StorageService,private route: ActivatedRoute
-    ,private cursoService: CursoService,) {}
+    ,private cursoService: CursoService,private router: Router) {}
   
   ngOnInit(): void {
+    this.idProfesor = +this.route.snapshot.params['idProfesor'];
     this.idCurso = +this.route.snapshot.params['idCurso'];
-
-    if(this.idCurso){
-     this.contarCantidadClases();
-     
-    }
+    this.claseId = +this.route.snapshot.params['claseId'];
+    
+    this.getClase();
   }
 
+  getClase(){
+
+    this.claseService.getClaseById(this.claseId).subscribe((clase) => {
+  
+      this.titulo = clase.title;
+      this.descripcion = clase.descripcion;
+      this.linkVideo = clase.url;
+    });
+  }
 
  
   onFileSelected(event: Event): void {
@@ -54,34 +61,34 @@ export class CrearClaseComponent implements OnInit{
     if (this.video) {
       this.storageService.uploadFile(this.video).then((url) => {
         this.linkVideo = url;
-        this.crearClase();
+        this.editarClase();
       }).catch((error) => {
         console.error("Error al subir el archivo:", error);
       });
     } else if (this.linkVideo.includes("youtube.com")||this.linkVideo.includes("firebasestorage")) {
-      this.crearClase();
+      this.editarClase();
     } else {
       swal("Atención", "Falta video", "warning");
     }
   }
 
-  private crearClase() {
+  private editarClase() {
   
     if (!this.titulo.trim() || !this.descripcion.trim()) {
       swal("Atención", "Todos los campos son obligatorios", "warning");
       return;
     }
     const clase: Clase = {
+      id: this.claseId,
       title: this.titulo,
       descripcion: this.descripcion,
       url: this.linkVideo
     };
     if (clase.url.includes("youtube.com") || clase.url.includes("firebasestorage")) {
-      this.claseService.createClase(clase, this.idCurso).subscribe(
+      this.claseService.updateClase(clase).subscribe(
         data => {
-          swal("¡Que bien!", "Clase creada", "success");
-          this.resetForm();
-          this.contarCantidadClases();
+          swal("¡Que bien!", "Clase editada", "success");
+          this.router.navigateByUrl(`/principal-profesor/${this.idProfesor}/lista-clases/${this.idCurso}`);
         },
         error => {
           swal("ERROR", "No se puedo guardar la clase", "error");

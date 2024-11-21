@@ -1,0 +1,21 @@
+ <app-nav-profesor></app-nav-profesor>
+ <div class="container"> 
+    <table class="table table-info">
+        <thead>
+            <tr>
+                <th scope="col">Titulo</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let clase of curso?.clases">
+                <td>{{clase.title}}</td>
+                <td>{{clase.descripcion}}</td>
+                <td><button class="btn btn-warning" routerLink="/principal-profesor/{{this.usuarioId}}/lista-clases/{{curso.id}}/editar-clase/{{clase.id}}">Editar Clase</button></td>
+            </tr>
+        </tbody>
+ </table>
+
+</div>
+

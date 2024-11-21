@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, HostListener  } from '@angular/core';
 import { Clase } from '../../../models/clase.model';
-import { VideoService } from '../../../services/video.service';
+ 
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -34,7 +34,7 @@ export class VideoPlayerComponent implements OnChanges {
   private isYouTubeApiLoaded = false; 
 idAlumno!: number;
 usuarioId!: number;
-  constructor(private videoService: VideoService, private sanitizer: DomSanitizer,private claseService: ClaseService,
+  constructor( private sanitizer: DomSanitizer,private claseService: ClaseService,
     private vistosService:alumnoClase, private route:ActivatedRoute,private router: Router,private tokenService: TokenService) {}
 
   ngOnChanges(changes: SimpleChanges) {

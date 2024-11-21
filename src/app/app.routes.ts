@@ -23,6 +23,8 @@ import { EditarPerfilAlumnoComponent } from './componentes/alumno/editar-perfil-
  
 import { AuthGuard } from './services/auth.guard';
 import { MisCertificadosComponent } from './componentes/alumno/mis-certificados/mis-certificados.component';
+import { ListaClasesComponent } from './componentes/clase/lista-clases/lista-clases.component';
+import { EditarClaseComponent } from './componentes/clase/editar-clase/editar-clase.component';
  
  
 export const routes: Routes = [
@@ -32,6 +34,8 @@ export const routes: Routes = [
     {path:'principal-alumno/:idAlumno/principal/:idCurso', component: PrincipalComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_ALUMNO']}},  
     {path:'videoPlayer/:id', component: VideoPlayerComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_ALUMNO']}},  
     {path:'principal-profesor/:idProfesor/crear-clase/:idCurso', component: CrearClaseComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_PROFESOR']}},  
+    {path: 'principal-profesor/:idProfesor/lista-clases/:idCurso', component: ListaClasesComponent,canActivate:[AuthGuard], data:{expectedRol:['ROLE_PROFESOR']}},
+    {path: 'principal-profesor/:idProfesor/lista-clases/:idCurso/editar-clase/:claseId', component: EditarClaseComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_PROFESOR']}},
     //CURSO
     {path:'lista-videos', component: ListaComponent, canActivate:[AuthGuard], data:{expectedRol:['ROLE_ALUMNO']}},  
     {path:'principal-profesor/:idProfesor/crear-curso', component: CrearCursoComponent,canActivate:[AuthGuard], data:{expectedRol:['ROLE_PROFESOR']}},

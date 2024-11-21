@@ -8,12 +8,7 @@ import { Observable } from 'rxjs';
 export class CursoService {
 
   constructor(private http: HttpClient) { }
-
-  private cursos:Curso[]=[
-    {id: 1, titulo: 'Angular', descripcion: 'Curso de Angular', clases: []},
-    {id: 2, titulo: 'React', descripcion: 'Curso de React', clases: []},
-    {id: 3, titulo: 'Vue', descripcion: 'Curso de Vue', clases:[]},
-  ]
+ 
 
   url="http://localhost:8080/curso"
   getCursos(): Observable<Curso[]> {
